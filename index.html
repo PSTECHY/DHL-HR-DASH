@@ -3,89 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DHL Supply Chain — HR Analytics Q1 2026</title>
+<title>DHL Supply Chain &#8212; HR Analytics Q1 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-:root{--red:#D40511;--yel:#FFCC00;--bg:#F0F2F5;--c1:#fff;--bd:#E5E7EB;--t1:#111827;--t2:#374151;--t3:#6B7280;--g:#16A34A;--r:#DC2626;--o:#EA580C;--b:#2563EB;--p:#7C3AED;--pk:#DB2777;--tl:#0D9488}
+:root{--red:#D40511;--yel:#FFCC00;--bg:#0F172A;--c1:#1E293B;--bd:#334155;--t1:#F1F5F9;--t2:#CBD5E1;--t3:#94A3B8;--g:#22C55E;--r:#EF4444;--o:#F97316;--b:#3B82F6;--p:#A78BFA;--pk:#EC4899;--tl:#2DD4BF;--card:#1E293B;--card2:#0F172A}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);height:100vh;overflow:hidden;display:flex;flex-direction:column;font-size:11px;-webkit-font-smoothing:antialiased}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#C4C4C4;border-radius:3px}
-.hdr{background:var(--red);display:flex;align-items:center;justify-content:space-between;padding:10px 24px;flex-shrink:0}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#475569;border-radius:3px}
+.hdr{background:linear-gradient(135deg,#B91C1C 0%,#D40511 50%,#DC2626 100%);display:flex;align-items:center;justify-content:space-between;padding:10px 24px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .hdr-l{display:flex;align-items:center;gap:14px}
-.logo{background:var(--yel);color:var(--red);font:900 18px/1 'Arial Black',sans-serif;padding:5px 12px;border-radius:4px;letter-spacing:3px}
-.hdr-l h1{font-size:15px;font-weight:700;color:#fff}.hdr-l p{font-size:10px;color:rgba(255,255,255,.7)}
+.logo{background:var(--yel);color:var(--red);font:900 18px/1 'Arial Black',sans-serif;padding:5px 12px;border-radius:4px;letter-spacing:3px;box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.hdr-l h1{font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2)}.hdr-l p{font-size:10px;color:rgba(255,255,255,.8)}
 .hdr-r{display:flex;align-items:center;gap:12px;font-size:10px;color:rgba(255,255,255,.9)}
-.badge{background:var(--yel);color:#8b0000;padding:3px 10px;border-radius:10px;font:800 8px/1.4 inherit;letter-spacing:1px}
-.ctrl{display:flex;align-items:center;gap:8px;padding:7px 24px;background:#fff;border-bottom:1px solid var(--bd);flex-shrink:0;flex-wrap:wrap}
+.badge{background:var(--yel);color:#8b0000;padding:3px 10px;border-radius:10px;font:800 8px/1.4 inherit;letter-spacing:1px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.ctrl{display:flex;align-items:center;gap:8px;padding:7px 24px;background:#1E293B;border-bottom:1px solid var(--bd);flex-shrink:0;flex-wrap:wrap}
 .ctrl label{font-size:9px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.7px}
-.ctrl select{background:#fff;border:1px solid var(--bd);color:var(--t1);padding:5px 24px 5px 10px;border-radius:6px;font:500 11px 'Inter',sans-serif;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+.ctrl select{background:#0F172A;border:1px solid var(--bd);color:var(--t1);padding:5px 24px 5px 10px;border-radius:6px;font:500 11px 'Inter',sans-serif;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
 .ctrl select:focus{border-color:var(--red)}
 .ctrl .sp{width:1px;height:18px;background:var(--bd)}
-.ctrl .rst{background:#fff;border:1px solid var(--bd);color:var(--t2);padding:5px 14px;border-radius:6px;font:600 10px 'Inter',sans-serif;cursor:pointer}
+.ctrl .rst{background:#0F172A;border:1px solid var(--bd);color:var(--t2);padding:5px 14px;border-radius:6px;font:600 10px 'Inter',sans-serif;cursor:pointer}
 .ctrl .rst:hover{border-color:var(--red);color:var(--red)}
-.cross-tag{background:#FEE2E2;color:var(--red);padding:3px 10px;border-radius:6px;font:600 10px 'Inter',sans-serif;display:none;align-items:center;gap:5px}
+.cross-tag{background:rgba(220,38,38,.15);color:#FCA5A5;padding:3px 10px;border-radius:6px;font:600 10px 'Inter',sans-serif;display:none;align-items:center;gap:5px;border:1px solid rgba(220,38,38,.3)}
 .cross-tag .x{cursor:pointer;font-size:14px;opacity:.6}.cross-tag .x:hover{opacity:1}
 .cross-tag.vis{display:flex}
-.tabs{display:flex;gap:0;padding:0 24px;background:#fff;border-bottom:1px solid var(--bd);flex-shrink:0}
-.tab{padding:10px 16px;font:600 11px 'Inter',sans-serif;color:var(--t3);background:0;border:0;cursor:pointer;position:relative}
-.tab:hover{color:var(--t1)}.tab.on{color:var(--red)}
+.tabs{display:flex;gap:0;padding:0 24px;background:#1E293B;border-bottom:1px solid var(--bd);flex-shrink:0}
+.tab{padding:10px 16px;font:600 11px 'Inter',sans-serif;color:var(--t3);background:0;border:0;cursor:pointer;position:relative;transition:color .2s}
+.tab:hover{color:var(--t1)}.tab.on{color:#FFCC00}
 .tab.on::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:2.5px;background:var(--red);border-radius:2px 2px 0 0}
 .main{flex:1;overflow:hidden;padding:8px 16px 6px;display:flex;flex-direction:column;min-height:0}
 .pg{display:none;flex:1;min-height:0}.pg.on{display:grid}
-.k{background:#fff;border-radius:10px;padding:11px 13px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid var(--bd);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.k{background:var(--card);border-radius:10px;padding:11px 13px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid var(--bd);box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .k.kt{border-left-color:var(--tl)}.k.kr{border-left-color:var(--red)}.k.kg{border-left-color:var(--g)}.k.ko{border-left-color:var(--o)}.k.kb{border-left-color:var(--b)}.k.kp{border-left-color:var(--p)}
 .k-l{font-size:9px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
-.k-v{font-size:20px;font-weight:800;line-height:1.2;margin:2px 0 1px}.k-s{font-size:9px;font-weight:500;color:var(--t3)}
+.k-v{font-size:20px;font-weight:800;line-height:1.2;margin:2px 0 1px;color:#fff}.k-s{font-size:9px;font-weight:500;color:var(--t3)}
 .k-s.up{color:var(--g)}.k-s.dn{color:var(--r)}.k-s.nt{color:var(--t3)}
-.cd{background:#fff;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;overflow:hidden;min-height:0;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.cd{background:var(--card);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;overflow:hidden;min-height:0;box-shadow:0 1px 4px rgba(0,0,0,.2)}
 .cd-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-shrink:0}
 .cd-t{font-size:12px;font-weight:700;color:var(--t1)}.cd-tag{font-size:8px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.5px}
 .cd-b{flex:1;min-height:0;position:relative}.cd-b canvas{width:100%!important;height:100%!important}
 .tbl-wrap{flex:1;overflow-y:auto;min-height:0}
 table.dt{width:100%;border-collapse:collapse;font-size:11px}
-table.dt th{position:sticky;top:0;background:#F8FAFC;color:var(--t2);font-weight:700;text-align:left;padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--bd);z-index:1}
-table.dt td{padding:5px 8px;border-bottom:1px solid #F1F5F9;color:var(--t2);white-space:nowrap;font-size:11px}
-table.dt tr{cursor:pointer}table.dt tr:hover td{background:#FEF2F2}
+table.dt th{position:sticky;top:0;background:#1E293B;color:var(--t3);font-weight:700;text-align:left;padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--bd);z-index:1}
+table.dt td{padding:5px 8px;border-bottom:1px solid #1E293B;color:var(--t2);white-space:nowrap;font-size:11px}
+table.dt tr{cursor:pointer}table.dt tr:hover td{background:rgba(212,5,17,.08)}
 table.dt .num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
-table.dt .hi{color:var(--r);font-weight:700}.dt .lo{color:var(--g);font-weight:700}
+table.dt .hi{color:#FCA5A5;font-weight:700}.dt .lo{color:var(--g);font-weight:700}
 .c2{grid-column:span 2}.c3{grid-column:span 3}.c6{grid-column:span 6}
-.ins{background:#fff;border-radius:10px;padding:13px 15px;border-left:4px solid var(--red);box-shadow:0 1px 3px rgba(0,0,0,.05)}
-.ins-t{font-size:12px;font-weight:800;margin-bottom:3px;color:var(--t1)}.ins-p{font-size:11px;color:var(--t2);line-height:1.65}.ins-p b{color:var(--red);font-weight:700}
-.sum-card{background:#fff;border-radius:10px;padding:13px 15px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
-.sum-card h4{font-size:12px;font-weight:800;margin-bottom:2px}
-.sr{display:flex;justify-content:space-between;font-size:11px;padding:3px 0;border-bottom:1px solid #F1F5F9}.sr-l{color:var(--t2)}.sr-v{font-weight:700}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1000;display:none;align-items:center;justify-content:center}
+.ins{background:var(--card);border-radius:10px;padding:13px 15px;border-left:4px solid var(--red);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.ins-t{font-size:12px;font-weight:800;margin-bottom:3px;color:#fff}.ins-p{font-size:11px;color:var(--t2);line-height:1.65}.ins-p b{color:#FCA5A5;font-weight:700}
+.sum-card{background:var(--card);border-radius:10px;padding:13px 15px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.sum-card h4{font-size:12px;font-weight:800;margin-bottom:2px;color:#fff}
+.sr{display:flex;justify-content:space-between;font-size:11px;padding:3px 0;border-bottom:1px solid #334155}.sr-l{color:var(--t2)}.sr-v{font-weight:700}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .modal-overlay.vis{display:flex}
-.modal{background:#fff;border-radius:14px;max-width:540px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.15)}
-.modal-hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--bd)}
-.modal-hdr h3{font-size:14px;font-weight:800;color:var(--red)}
+.modal{background:#1E293B;border-radius:14px;max-width:540px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1px solid #334155}
+.modal-hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #334155}
+.modal-hdr h3{font-size:14px;font-weight:800;color:var(--yel)}
 .modal-close{background:0;border:0;color:var(--t3);font-size:20px;cursor:pointer;padding:2px 6px;border-radius:4px}
-.modal-close:hover{color:var(--t1);background:#F3F4F6}
+.modal-close:hover{color:#fff;background:#334155}
 .modal-body{padding:14px 18px;max-height:60vh;overflow-y:auto}
-.m-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F1F5F9;font-size:12px}
-.m-label{color:var(--t3);font-weight:500}.m-val{color:var(--t1);font-weight:700}
-.m-section{margin-top:12px}.m-section h4{font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px}
+.m-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #334155;font-size:12px}
+.m-label{color:var(--t3);font-weight:500}.m-val{color:#fff;font-weight:700}
+.m-section{margin-top:12px}.m-section h4{font-size:12px;font-weight:700;color:var(--yel);margin-bottom:6px}
 .m-bullet{font-size:11px;color:var(--t2);line-height:1.7;padding-left:14px;position:relative}
 .m-bullet::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%}
 .m-bullet.good::before{background:var(--g)}.m-bullet.bad::before{background:var(--r)}.m-bullet.info::before{background:var(--b)}
-.m-action{margin-top:10px;padding:10px 12px;background:#FEF2F2;border-radius:8px;font-size:11px;color:var(--t1);line-height:1.6}
-.m-action b{color:var(--red)}
+.m-action{margin-top:10px;padding:10px 12px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.25);border-radius:8px;font-size:11px;color:var(--t2);line-height:1.6}
+.m-action b{color:#FCA5A5}
 .search-wrap{padding:16px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
-.search-input{width:100%;padding:10px 14px;border:1px solid var(--bd);border-radius:8px;font:500 13px 'Inter',sans-serif;outline:none;background:#fff}
+.search-input{width:100%;padding:10px 14px;border:1px solid var(--bd);border-radius:8px;font:500 13px 'Inter',sans-serif;outline:none;background:#0F172A;color:var(--t1)}
 .search-input:focus{border-color:var(--red)}
 .search-results{display:flex;flex-direction:column;gap:6px}
-.search-item{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;cursor:pointer}
-.search-item:hover{border-color:var(--red)}
-.search-item h4{font-size:12px;font-weight:700;margin-bottom:1px}.search-item p{font-size:11px;color:var(--t2)}
+.search-item{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:10px 14px;cursor:pointer}
+.search-item:hover{border-color:var(--red);background:#334155}
+.search-item h4{font-size:12px;font-weight:700;margin-bottom:1px;color:#fff}.search-item p{font-size:11px;color:var(--t2)}
 .pg-ov,.pg-wf,.pg-geo,.pg-ca,.pg-comp{grid-template-columns:repeat(6,1fr);grid-template-rows:auto 1fr 1fr;gap:7px}
 .pg-in{grid-template-columns:1fr 1fr 1fr;grid-auto-rows:min-content;gap:7px;overflow-y:auto;align-content:start;padding-bottom:12px}
 .pg-sr{grid-template-columns:1fr;grid-auto-rows:min-content;overflow-y:auto}
 </style>
 </head>
 <body>
-<div class="hdr"><div class="hdr-l"><div class="logo">DHL</div><div><h1>HR Analytics Dashboard</h1><p>Supply Chain India — Q1 2026 Workforce Intelligence</p></div></div><div class="hdr-r"><span>Jan — Mar 2026</span><div class="badge">LIVE</div></div></div>
+<div class="hdr"><div class="hdr-l"><div class="logo">DHL</div><div><h1>HR Analytics Dashboard</h1><p>Supply Chain India - Q1 2026 Workforce Intelligence</p></div></div><div class="hdr-r"><span>Jan - Mar 2026</span><div class="badge">LIVE</div></div></div>
 <div class="ctrl">
 <label>Month</label><select id="fM" onchange="R()"><option value="jan">January</option><option value="feb">February</option><option value="mar" selected>March</option></select>
 <div class="sp"></div><label>Region</label><select id="fR" onchange="R()"><option value="all">All Regions</option><option value="Corporate">Corporate</option><option value="East">East</option><option value="North">North</option><option value="South1">South1</option><option value="South2">South2</option><option value="South3">South3</option><option value="West 1">West 1</option><option value="West 2">West 2</option><option value="Other Offices">Other Offices</option></select>
@@ -125,21 +126,19 @@ ag:{'PSN Supply Chain':{n:1408,ctc:18817,att:25.33,ot:8.44},'Avadhoot':{n:941,ct
 wh:{'Shakti LP Zepto Ph2':1260,'BLR Mysandra Puma':712,'Horizon ABFRL Bilaspur':609,'PNQ Chakan':574,'BLR Arvind Hoskote':540,'Thane RK Empire':490,'DEL MDR 132 Haryana':429,'BLR Anekal Mayasandra':428,'CCU IDCO Amazon':426,'Thane Skechers':407,'Shakti LP Zepto Store':383,'MAA SIPCOT Samsung':365,'BLR Mayasandra IV':314,'BLR Mayasandra Anekal':291,'BLR MCS V Shared':286},
 stAttr:{Karnataka:88,Maharashtra:64,Telangana:19,Haryana:15,'Tamil Nadu':7,Punjab:3,'Uttar Pradesh':3,Delhi:2}
 };
-const $=id=>document.getElementById(id),fmt=n=>n!=null?n.toLocaleString('en-IN'):'—',rf=v=>v!=null?'₹'+v.toLocaleString('en-IN'):'—',pct=(a,b)=>b?((a/b)*100).toFixed(1):'0';
+const $=id=>document.getElementById(id),fmt=n=>n!=null?n.toLocaleString('en-IN'):'-',rf=v=>v!=null?'₹'+v.toLocaleString('en-IN'):'-',pct=(a,b)=>b?((a/b)*100).toFixed(1):'0';
 const mn={jan:'Jan',feb:'Feb',mar:'Mar'},pM={jan:null,feb:'jan',mar:'feb'};
 const regs=['Corporate','East','North','South1','South2','South3','West 1','West 2','Other Offices'],mR=['East','North','South1','South2','South3','West 1','West 2'];
-// BRIGHT vivid colors — no transparency
 const C=['#E11D48','#2563EB','#16A34A','#EA580C','#7C3AED','#0891B2','#CA8A04','#DB2777','#059669','#4F46E5','#DC2626','#0D9488'];
-Chart.defaults.color='#6B7280';Chart.defaults.borderColor='#F1F5F9';Chart.defaults.font.family='Inter';Chart.defaults.font.size=10;
+Chart.defaults.color='#94A3B8';Chart.defaults.borderColor='#1E293B';Chart.defaults.font.family='Inter';Chart.defaults.font.size=10;
 Chart.defaults.plugins.legend.labels.usePointStyle=true;Chart.defaults.plugins.legend.labels.pointStyleWidth=6;
 Chart.defaults.plugins.legend.labels.padding=6;Chart.defaults.plugins.legend.labels.font={size:9,weight:'500'};
 Chart.defaults.elements.bar.borderRadius=3;Chart.defaults.animation.duration=250;
 Chart.register(ChartDataLabels);Chart.defaults.plugins.datalabels={display:false};
 let ch={},xF=null;
 function destroyAll(){Object.values(ch).forEach(c=>c.destroy?.());ch={}}
-// Datalabel config that stays INSIDE chart
-const dlInside={display:true,color:'#374151',font:{size:8,weight:'700'},anchor:'end',align:'start',offset:-2,clamp:true};
-const dlTop={display:true,color:'#374151',font:{size:8,weight:'700'},anchor:'end',align:'end',padding:{bottom:2}};
+const dlInside={display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'start',offset:-2,clamp:true};
+const dlTop={display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'end',padding:{bottom:2}};
 
 function setCross(t,v){xF={type:t,value:v};$('crossLabel').textContent=t[0].toUpperCase()+t.slice(1)+': '+v;$('crossTag').classList.add('vis');if(t==='region')$('fR').value=regs.includes(v)?v:'all';if(t==='sector')$('fS').value=v;R()}
 function sectorDD(){const v=$('fS').value;if(v==='all'){clearCross();return}setCross('sector',v)}
@@ -149,70 +148,70 @@ function openModal(t,h){$('modalT').textContent=t;$('modalB').innerHTML=h;$('mod
 function closeModal(){$('modalOv').classList.remove('vis')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-function mRow(l,v,s){return`<div class="m-row"><span class="m-label">${l}</span><span class="m-val"${s?' style="color:'+s+'"':''}>${v}</span></div>`}
-function mBullets(bs){return bs.map(b=>`<div class="m-bullet ${b.c}">${b.t}</div>`).join('')}
+function mRow(l,v,s){return'<div class="m-row"><span class="m-label">'+l+'</span><span class="m-val"'+(s?' style="color:'+s+'"':'')+'>'+v+'</span></div>'}
+function mBullets(bs){return bs.map(b=>'<div class="m-bullet '+b.c+'">'+b.t+'</div>').join('')}
 
 function regionPopup(r){
   let b=[];
-  if(r.inactive>0)b.push({t:`${r.inactive} exits this month (${r.attrRate}% attrition)`,c:parseFloat(r.attrRate)>1.5?'bad':'info'});
-  if(r.pActive!=null){const d=r.active-r.pActive;b.push({t:`Headcount ${d>=0?'grew by +'+d:'dropped by '+d} vs last month`,c:d>=0?'good':'bad'})}
-  if(r.attend<24)b.push({t:`Attendance ${r.attend.toFixed(1)}d is below 24-day healthy threshold — absenteeism risk`,c:'bad'});
-  else b.push({t:`Attendance healthy at ${r.attend.toFixed(1)} days`,c:'good'});
-  if(r.otPct>10)b.push({t:`OT at ${r.otPct.toFixed(1)}% is CRITICAL — severe understaffing, immediate hiring needed`,c:'bad'});
-  else if(r.otPct>6)b.push({t:`OT at ${r.otPct.toFixed(1)}% is elevated — monitor shift allocation`,c:'bad'});
-  else b.push({t:`OT controlled at ${r.otPct.toFixed(1)}%`,c:'good'});
-  if(parseFloat(r.attrRate)>1.5&&r.ctc<18000)b.push({t:`Low CTC (${rf(r.ctc)}) combined with high exits — compensation is likely driving attrition`,c:'bad'});
-  if(r.pCtc&&r.ctc>r.pCtc)b.push({t:`CTC increased ${rf(r.pCtc)} &#8594; ${rf(r.ctc)} (+${((r.ctc-r.pCtc)/r.pCtc*100).toFixed(1)}%)`,c:'good'});
+  if(r.inactive>0)b.push({t:r.inactive+' exits this month ('+r.attrRate+'% attrition)',c:parseFloat(r.attrRate)>1.5?'bad':'info'});
+  if(r.pActive!=null){const d=r.active-r.pActive;b.push({t:'Headcount '+(d>=0?'grew by +'+d:'dropped by '+d)+' vs last month',c:d>=0?'good':'bad'})}
+  if(r.attend<24)b.push({t:'Attendance '+r.attend.toFixed(1)+'d is below 24-day healthy threshold - absenteeism risk',c:'bad'});
+  else b.push({t:'Attendance healthy at '+r.attend.toFixed(1)+' days',c:'good'});
+  if(r.otPct>10)b.push({t:'OT at '+r.otPct.toFixed(1)+'% is CRITICAL - severe understaffing, immediate hiring needed',c:'bad'});
+  else if(r.otPct>6)b.push({t:'OT at '+r.otPct.toFixed(1)+'% is elevated - monitor shift allocation',c:'bad'});
+  else b.push({t:'OT controlled at '+r.otPct.toFixed(1)+'%',c:'good'});
+  if(parseFloat(r.attrRate)>1.5&&r.ctc<18000)b.push({t:'Low CTC ('+rf(r.ctc)+') combined with high exits - compensation is likely driving attrition',c:'bad'});
+  if(r.pCtc&&r.ctc>r.pCtc)b.push({t:'CTC increased '+rf(r.pCtc)+' to '+rf(r.ctc)+' (+'+((r.ctc-r.pCtc)/r.pCtc*100).toFixed(1)+'%)',c:'good'});
   let action='';
-  if(parseFloat(r.attrRate)>1.5)action=`<div class="m-action"><b>Action Required:</b> Conduct exit interviews within 2 weeks. Review compensation vs market rate. Implement retention bonus for 6-month completers.</div>`;
-  else if(r.otPct>10)action=`<div class="m-action"><b>Action Required:</b> Audit shift schedules immediately. Add 15-20% temp workforce. Cap OT at 8% within 30 days.</div>`;
-  else if(r.attend<24)action=`<div class="m-action"><b>Action Required:</b> Investigate absenteeism drivers. Consider transport support or shift flexibility.</div>`;
-  openModal(r.name+' — Region Analysis',mRow('Active',fmt(r.active))+mRow('Inactive',r.inactive,r.inactive>0?'var(--r)':'var(--g)')+mRow('Attrition',r.attrRate+'%')+mRow('Avg CTC',rf(r.ctc))+mRow('Attendance',r.attend.toFixed(1)+'d')+mRow('OT%',r.otPct.toFixed(1)+'%')+`<div class="m-section"><h4>Key Findings</h4>${mBullets(b)}</div>`+action);
+  if(parseFloat(r.attrRate)>1.5)action='<div class="m-action"><b>Action Required:</b> Conduct exit interviews within 2 weeks. Review compensation vs market rate. Implement retention bonus for 6-month completers.</div>';
+  else if(r.otPct>10)action='<div class="m-action"><b>Action Required:</b> Audit shift schedules immediately. Add 15-20% temp workforce. Cap OT at 8% within 30 days.</div>';
+  else if(r.attend<24)action='<div class="m-action"><b>Action Required:</b> Investigate absenteeism drivers. Consider transport support or shift flexibility.</div>';
+  openModal(r.name+' - Region Analysis',mRow('Active',fmt(r.active))+mRow('Inactive',r.inactive,r.inactive>0?'var(--r)':'var(--g)')+mRow('Attrition',r.attrRate+'%')+mRow('Avg CTC',rf(r.ctc))+mRow('Attendance',r.attend.toFixed(1)+'d')+mRow('OT%',r.otPct.toFixed(1)+'%')+'<div class="m-section"><h4>Key Findings</h4>'+mBullets(b)+'</div>'+action);
 }
 
 function agencyPopup(name,v){
   const avgCtc=18500,avgAtt=25.5,avgOT=6.5;
   let b=[],rating='Average';
-  if(v.ctc>25000){b.push({t:`Premium pricing — CTC ${rf(v.ctc)} is ${Math.round((v.ctc/avgCtc-1)*100)}% above company avg`,c:'info'});rating='Premium'}
-  else if(v.ctc<17000){b.push({t:`Budget agency — CTC ${rf(v.ctc)} is ${Math.round((1-v.ctc/avgCtc)*100)}% below avg, quality risk`,c:'bad'});rating='Budget'}
-  else b.push({t:`CTC ${rf(v.ctc)} is in line with company average`,c:'good'});
-  if(v.att>27){b.push({t:`Top-tier attendance at ${v.att}d — workers are engaged`,c:'good'});if(rating==='Average')rating='Strong'}
-  else if(v.att<23){b.push({t:`Poor attendance ${v.att}d — ${Math.round((1-v.att/avgAtt)*100)}% below avg, workers may be disengaged`,c:'bad'});rating='Weak'}
-  if(v.ot>10)b.push({t:`OT ${v.ot}% is dangerously high — workers overloaded, burnout risk`,c:'bad'});
-  else if(v.ot<3)b.push({t:`OT ${v.ot}% is very low — efficient workforce management`,c:'good'});
+  if(v.ctc>25000){b.push({t:'Premium pricing - CTC '+rf(v.ctc)+' is '+Math.round((v.ctc/avgCtc-1)*100)+'% above company avg',c:'info'});rating='Premium'}
+  else if(v.ctc<17000){b.push({t:'Budget agency - CTC '+rf(v.ctc)+' is '+Math.round((1-v.ctc/avgCtc)*100)+'% below avg, quality risk',c:'bad'});rating='Budget'}
+  else b.push({t:'CTC '+rf(v.ctc)+' is in line with company average',c:'good'});
+  if(v.att>27){b.push({t:'Top-tier attendance at '+v.att+'d - workers are engaged',c:'good'});if(rating==='Average')rating='Strong'}
+  else if(v.att<23){b.push({t:'Poor attendance '+v.att+'d - '+Math.round((1-v.att/avgAtt)*100)+'% below avg, workers may be disengaged',c:'bad'});rating='Weak'}
+  if(v.ot>10)b.push({t:'OT '+v.ot+'% is dangerously high - workers overloaded, burnout risk',c:'bad'});
+  else if(v.ot<3)b.push({t:'OT '+v.ot+'% is very low - efficient workforce management',c:'good'});
   const cpd=Math.round(v.ctc/v.att);
-  b.push({t:`Effective cost per productive day: ${rf(cpd)}`,c:'info'});
-  const costEff=cpd<700?'Excellent':'good';
+  b.push({t:'Effective cost per productive day: '+rf(cpd),c:'info'});
   let action='';
-  if(v.ot>10)action=`<div class="m-action"><b>Contract Review:</b> OT exceeds acceptable limits. Renegotiate staffing ratios or add headcount before next renewal.</div>`;
-  else if(v.att<23)action=`<div class="m-action"><b>Performance Warning:</b> Issue formal attendance improvement notice. Set 25-day target for next quarter.</div>`;
-  else if(v.ctc>30000)action=`<div class="m-action"><b>Cost Optimization:</b> Premium pricing justified only if attendance >28d. Current ${v.att}d — evaluate ROI before renewal.</div>`;
-  openModal(name+' — Agency Scorecard',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+mRow('Attendance',v.att+'d')+mRow('OT%',v.ot+'%',v.ot>10?'var(--r)':'')+mRow('Cost/Day',rf(cpd))+mRow('Rating',rating,rating==='Strong'||rating==='Premium'?'var(--g)':rating==='Weak'||rating==='Budget'?'var(--r)':'')+`<div class="m-section"><h4>Analysis</h4>${mBullets(b)}</div>`+action);
+  if(v.ot>10)action='<div class="m-action"><b>Contract Review:</b> OT exceeds acceptable limits. Renegotiate staffing ratios or add headcount before next renewal.</div>';
+  else if(v.att<23)action='<div class="m-action"><b>Performance Warning:</b> Issue formal attendance improvement notice. Set 25-day target for next quarter.</div>';
+  else if(v.ctc>30000)action='<div class="m-action"><b>Cost Optimization:</b> Premium pricing justified only if attendance >28d. Current '+v.att+'d - evaluate ROI before renewal.</div>';
+  openModal(name+' - Agency Scorecard',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+mRow('Attendance',v.att+'d')+mRow('OT%',v.ot+'%',v.ot>10?'var(--r)':'')+mRow('Cost/Day',rf(cpd))+mRow('Rating',rating,rating==='Strong'||rating==='Premium'?'var(--g)':rating==='Weak'||rating==='Budget'?'var(--r)':'')+
+  '<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>'+action);
 }
 
 function whPopup(name,cnt,tA){
   const sh=(cnt/tA*100).toFixed(1);
-  let b=[{t:`${fmt(cnt)} employees — ${sh}% of total workforce`,c:'info'}];
-  if(cnt>1000)b.push({t:`Mega facility with 1,000+ workers — needs dedicated HRBP and daily attrition tracking`,c:'info'});
-  if(cnt>500&&cnt<=1000)b.push({t:`Large facility — monthly attrition review recommended`,c:'info'});
-  if(name.includes('BLR'))b.push({t:`Bangalore location in South1 — highest attrition region at 2.2%. Priority site for retention initiatives`,c:'bad'});
-  if(name.includes('Zepto'))b.push({t:`Quick-commerce operations — expect 15-20% monthly churn. Build buffer staffing model`,c:'info'});
-  if(name.includes('Puma')||name.includes('ABFRL')||name.includes('Skechers'))b.push({t:`Fashion/retail client — plan for seasonal ramp-up/down cycles`,c:'info'});
-  if(name.includes('Amazon'))b.push({t:`Amazon operations — high volume, strict SLAs. Attendance management is critical`,c:'info'});
-  if(name.includes('Samsung'))b.push({t:`Electronics manufacturing — skilled workforce needed. Invest in MHE training`,c:'info'});
-  let action=cnt>1000?`<div class="m-action"><b>Action:</b> Deploy dedicated site HR. Set up weekly attrition dashboard. Create 30-day retention program for new joiners.</div>`:'';
-  openModal(name,mRow('Warehouse',name)+mRow('Headcount',fmt(cnt))+mRow('Workforce Share',sh+'%')+`<div class="m-section"><h4>Analysis</h4>${mBullets(b)}</div>`+action);
+  let b=[{t:fmt(cnt)+' employees - '+sh+'% of total workforce',c:'info'}];
+  if(cnt>1000)b.push({t:'Mega facility with 1,000+ workers - needs dedicated HRBP and daily attrition tracking',c:'info'});
+  if(cnt>500&&cnt<=1000)b.push({t:'Large facility - monthly attrition review recommended',c:'info'});
+  if(name.includes('BLR'))b.push({t:'Bangalore location in South1 - highest attrition region at 2.2%. Priority site for retention initiatives',c:'bad'});
+  if(name.includes('Zepto'))b.push({t:'Quick-commerce operations - expect 15-20% monthly churn. Build buffer staffing model',c:'info'});
+  if(name.includes('Puma')||name.includes('ABFRL')||name.includes('Skechers'))b.push({t:'Fashion/retail client - plan for seasonal ramp-up/down cycles',c:'info'});
+  if(name.includes('Amazon'))b.push({t:'Amazon operations - high volume, strict SLAs. Attendance management is critical',c:'info'});
+  if(name.includes('Samsung'))b.push({t:'Electronics manufacturing - skilled workforce needed. Invest in MHE training',c:'info'});
+  let action=cnt>1000?'<div class="m-action"><b>Action:</b> Deploy dedicated site HR. Set up weekly attrition dashboard. Create 30-day retention program for new joiners.</div>':'';
+  openModal(name,mRow('Warehouse',name)+mRow('Headcount',fmt(cnt))+mRow('Workforce Share',sh+'%')+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>'+action);
 }
 
 function desigPopup(name,v){
   const avgAll=18500;
   let b=[];
-  if(v.ctc<avgAll)b.push({t:`CTC ${rf(v.ctc)} is ${Math.round((1-v.ctc/avgAll)*100)}% below company avg — flight risk if market offers more`,c:'bad'});
-  else b.push({t:`CTC ${rf(v.ctc)} is ${Math.round((v.ctc/avgAll-1)*100)}% above company avg`,c:'good'});
-  if(v.n>5000)b.push({t:`${fmt(v.n)} employees — this is the backbone role. Even 1% attrition = ${Math.round(v.n*0.01)} replacements needed`,c:'info'});
-  if(name==='Material Handler')b.push({t:`Lowest-paid, highest-volume role. Primary target for upskilling to Reach Truck/Fork Lift operators`,c:'info'});
-  if(name==='Executive')b.push({t:`Senior role — retention critical. Any exit means 3-6 month replacement cycle`,c:'info'});
-  openModal(name+' — Role Analysis',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+`<div class="m-section"><h4>Analysis</h4>${mBullets(b)}</div>`);
+  if(v.ctc<avgAll)b.push({t:'CTC '+rf(v.ctc)+' is '+Math.round((1-v.ctc/avgAll)*100)+'% below company avg - flight risk if market offers more',c:'bad'});
+  else b.push({t:'CTC '+rf(v.ctc)+' is '+Math.round((v.ctc/avgAll-1)*100)+'% above company avg',c:'good'});
+  if(v.n>5000)b.push({t:fmt(v.n)+' employees - this is the backbone role. Even 1% attrition = '+Math.round(v.n*0.01)+' replacements needed',c:'info'});
+  if(name==='Material Handler')b.push({t:'Lowest-paid, highest-volume role. Primary target for upskilling to Reach Truck/Fork Lift operators',c:'info'});
+  if(name==='Executive')b.push({t:'Senior role - retention critical. Any exit means 3-6 month replacement cycle',c:'info'});
+  openModal(name+' - Role Analysis',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>');
 }
 
 // === FILTERED DATA ===
@@ -233,11 +232,11 @@ function getF(){
 }
 
 const pages=['ov','wf','geo','ca','comp','in','sr'],pN=['Overview','Workforce','Geography','Clients & Agencies','Compliance','Insights','Search'];
-$('tabBar').innerHTML=pages.map((p,i)=>`<button class="tab${i===0?' on':''}" onclick="go('${p}',this)">${pN[i]}</button>`).join('');
+$('tabBar').innerHTML=pages.map((p,i)=>'<button class="tab'+(i===0?' on':'')+'" onclick="go(\''+p+'\',this)">'+pN[i]+'</button>').join('');
 function go(id,btn){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));$('pg-'+id).classList.add('on');btn.classList.add('on');setTimeout(()=>Object.values(ch).forEach(c=>c.resize?.()),30)}
 function R(){destroyAll();const F=getF();rOV(F);rWF(F);rGEO(F);rCA(F);rCOMP(F);rIN(F);rSR();setTimeout(()=>Object.values(ch).forEach(c=>c.resize?.()),50)}
-function K(l,v,cls,sub,sc){return`<div class="k ${cls}"><div class="k-l">${l}</div><div class="k-v">${v}</div><div class="k-s ${sc}">${sub}</div></div>`}
-function chS(c,p,inv){if(p==null)return{t:'Baseline',c:'nt'};const d=(typeof c==='string'?parseFloat(c):c)-(typeof p==='string'?parseFloat(p):p);const pc=p!=0?((d/Math.abs(typeof p==='string'?parseFloat(p):p))*100).toFixed(1):0;return{t:`${d>=0?'▲':'▼'} ${Math.abs(pc)}% vs prev`,c:(inv?(d<=0):(d>=0))?'up':'dn'}}
+function K(l,v,cls,sub,sc){return'<div class="k '+cls+'"><div class="k-l">'+l+'</div><div class="k-v">'+v+'</div><div class="k-s '+sc+'">'+sub+'</div></div>'}
+function chS(c,p,inv){if(p==null)return{t:'Baseline',c:'nt'};const d=(typeof c==='string'?parseFloat(c):c)-(typeof p==='string'?parseFloat(p):p);const pc=p!=0?((d/Math.abs(typeof p==='string'?parseFloat(p):p))*100).toFixed(1):0;return{t:(d>=0?'▲':'▼')+' '+Math.abs(pc)+'% vs prev',c:(inv?(d<=0):(d>=0))?'up':'dn'}}
 function pieClick(t,ls){return{onClick:(e,el)=>{if(!el.length)return;const v=ls[el[0].index];if(xF?.type===t&&xF.value===v)clearCross();else setCross(t,v)}}}
 
 // ========== OVERVIEW ==========
@@ -251,111 +250,111 @@ function rOV(F){
   const u1Pct=Math.round(D.tenure['<1yr']/tT*100);
   const trend=['jan','feb','mar'].map(mo=>{let a=0,i=0;(F.r==='all'?regs:[F.r]).forEach(rg=>{const h=D.headcount[rg]?.[mo];if(h){a+=h.a;i+=h.i}});return{a,i}});
 
-  $('pg-ov').innerHTML=`
-    ${K('Active Headcount',fmt(totalA),'kt',fmt(g.F)+' female ('+femPct+'%)','nt')}
-    ${K('Female Ratio',femPct+'%','kr',fmt(g.F)+' of '+fmt(g.M+g.F),'nt')}
-    ${K('Avg Age',avgAge+' yr','kg',u25Pct+'% are under 25','nt')}
-    ${K('Avg Tenure',avgTen+' yr','ko',u1Pct+'% under 1 year','nt')}
-    ${K('BGV Done','94%','kb',fmt(Math.round(totalA*.94))+' verified','nt')}
-    ${K('Training','87%','kp',fmt(Math.round(totalA*.87))+' trained','nt')}
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Headcount Trend — Q1</span></div><div class="cd-b"><canvas id="c1"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Gender Split</span></div><div class="cd-b"><canvas id="c2"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Distribution</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK TO FILTER</span></div><div class="cd-b"><canvas id="c3"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Activity Type</span></div><div class="cd-b"><canvas id="c4"></canvas></div></div>`;
+  $('pg-ov').innerHTML=
+    K('Active Headcount',fmt(totalA),'kt',fmt(g.F)+' female ('+femPct+'%)','nt')+
+    K('Female Ratio',femPct+'%','kr',fmt(g.F)+' of '+fmt(g.M+g.F),'nt')+
+    K('Avg Age',avgAge+' yr','kg',u25Pct+'% are under 25','nt')+
+    K('Avg Tenure',avgTen+' yr','ko',u1Pct+'% under 1 year','nt')+
+    K('BGV Done','94%','kb',fmt(Math.round(totalA*.94))+' verified','nt')+
+    K('Training','87%','kp',fmt(Math.round(totalA*.87))+' trained','nt')+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Headcount Trend - Q1</span></div><div class="cd-b"><canvas id="c1"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Gender Split</span></div><div class="cd-b"><canvas id="c2"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Distribution</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK TO FILTER</span></div><div class="cd-b"><canvas id="c3"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Activity Type</span></div><div class="cd-b"><canvas id="c4"></canvas></div></div>';
 
   ch.c1=new Chart($('c1'),{type:'bar',data:{labels:['Jan','Feb','Mar'],datasets:[
     {label:'Active',data:trend.map(d=>d.a),backgroundColor:'#16A34A',yAxisID:'y'},
     {label:'Inactive',data:trend.map(d=>d.i),backgroundColor:'#DC2626',yAxisID:'y1'}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:true,color:'#374151',font:{size:8,weight:'700'},anchor:'end',align:'end',formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{type:'linear',position:'left',grid:{color:'#F1F5F9'},beginAtZero:false,title:{display:true,text:'Active',font:{size:8}}},y1:{type:'linear',position:'right',grid:{display:false},beginAtZero:true,title:{display:true,text:'Inactive',font:{size:8}}}}}});
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'end',formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{type:'linear',position:'left',grid:{color:'#334155'},beginAtZero:false,title:{display:true,text:'Active',font:{size:8}}},y1:{type:'linear',position:'right',grid:{display:false},beginAtZero:true,title:{display:true,text:'Inactive',font:{size:8}}}}}});
 
-  ch.c2=new Chart($('c2'),{type:'doughnut',data:{labels:['Male ('+fmt(g.M)+')','Female ('+fmt(g.F)+')'],datasets:[{data:[g.M,g.F],backgroundColor:['#2563EB','#E11D48'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:8}},datalabels:{display:true,color:'#fff',font:{size:14,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
+  ch.c2=new Chart($('c2'),{type:'doughnut',data:{labels:['Male ('+fmt(g.M)+')','Female ('+fmt(g.F)+')'],datasets:[{data:[g.M,g.F],backgroundColor:['#2563EB','#E11D48'],borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:8}},datalabels:{display:true,color:'#fff',font:{size:14,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
 
   const sE=Object.entries(D.sector).sort((a,b)=>b[1]-a[1]),sL=sE.map(e=>e[0]),sD=sE.map(e=>e[1]);
   const hl=xF?.type==='sector'?sL.indexOf(xF.value):-1;
-  ch.c3=new Chart($('c3'),{type:'doughnut',data:{labels:sL,datasets:[{data:sD,backgroundColor:sL.map((l,i)=>hl>=0&&i!==hl?'#E5E7EB':C[i%C.length]),borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'38%',plugins:{legend:{position:'right',labels:{font:{size:9},padding:4,boxWidth:10}},datalabels:{display:true,color:'#fff',font:{size:8,weight:'800'},formatter:(v,ctx)=>{const p=Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100);return p>5?p+'%':''}}},...pieClick('sector',sL)}});
+  ch.c3=new Chart($('c3'),{type:'doughnut',data:{labels:sL,datasets:[{data:sD,backgroundColor:sL.map((l,i)=>hl>=0&&i!==hl?'#334155':C[i%C.length]),borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'38%',plugins:{legend:{position:'right',labels:{font:{size:9},padding:4,boxWidth:10}},datalabels:{display:true,color:'#fff',font:{size:8,weight:'800'},formatter:(v,ctx)=>{const p=Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100);return p>5?p+'%':''}}},...pieClick('sector',sL)}});
 
   const aE=Object.entries(D.activity).sort((a,b)=>b[1]-a[1]);
-  ch.c4=new Chart($('c4'),{type:'bar',data:{labels:aE.map(e=>e[0]),datasets:[{data:aE.map(e=>e[1]),backgroundColor:'#D40511'}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:{display:true,color:'#374151',font:{size:9,weight:'700'},anchor:'end',align:'right',formatter:v=>fmt(v)}},scales:{x:{grid:{color:'#F1F5F9'}},y:{grid:{display:false},ticks:{font:{size:10}}}}}});
+  ch.c4=new Chart($('c4'),{type:'bar',data:{labels:aE.map(e=>e[0]),datasets:[{data:aE.map(e=>e[1]),backgroundColor:'#D40511'}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{left:10}},plugins:{legend:{display:false},datalabels:{display:true,color:'#E2E8F0',font:{size:9,weight:'700'},anchor:'end',align:'right',formatter:v=>fmt(v)}},scales:{x:{grid:{color:'#334155'}},y:{grid:{display:false},ticks:{font:{size:9},color:'#CBD5E1'}}}}});
 }
 
 // ========== WORKFORCE ==========
 function rWF(F){
   const{m,p,totalA,totalI,g,ga,regRows}=F,total=totalA+totalI,aR=pct(totalI,total),fP=pct(g.F,g.M+g.F);
   const hot=regRows.filter(r=>r.inactive>0).sort((a,b)=>b.inactive-a.inactive)[0];
-  $('pg-wf').innerHTML=`
-    ${K('Total HC',fmt(total),'kt','Active '+fmt(totalA)+' &#183; Inactive '+fmt(totalI),'nt')}
-    ${K('Attrition',aR+'%','kr',totalI+' exits','dn')}
-    ${K('Female',fP+'%','kp',fmt(g.F)+' employees','nt')}
-    ${K('Male Exits',fmt(ga.M),'kb',p?'Prev: '+D.gAttr[p].M:'','nt')}
-    ${K('Female Exits',fmt(ga.F),'ko',p?'Prev: '+D.gAttr[p].F:'','nt')}
-    ${K('Hotspot',hot?hot.name:'—','kr',hot?hot.inactive+' exits':'','dn')}
-    <div class="cd c2"><div class="cd-h"><span class="cd-t">Age Distribution</span></div><div class="cd-b"><canvas id="w1"></canvas></div></div>
-    <div class="cd c2"><div class="cd-h"><span class="cd-t">Tenure Distribution</span></div><div class="cd-b"><canvas id="w2"></canvas></div></div>
-    <div class="cd c2"><div class="cd-h"><span class="cd-t">Gender Trend — Q1</span></div><div class="cd-b"><canvas id="w3"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Attrition by Region — Q1</span></div><div class="cd-b"><canvas id="w4"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Exit by Tenure</span></div><div class="cd-b"><canvas id="w5"></canvas></div></div>`;
+  $('pg-wf').innerHTML=
+    K('Total HC',fmt(total),'kt','Active '+fmt(totalA)+' | Inactive '+fmt(totalI),'nt')+
+    K('Attrition',aR+'%','kr',totalI+' exits','dn')+
+    K('Female',fP+'%','kp',fmt(g.F)+' employees','nt')+
+    K('Male Exits',fmt(ga.M),'kb',p?'Prev: '+D.gAttr[p].M:'','nt')+
+    K('Female Exits',fmt(ga.F),'ko',p?'Prev: '+D.gAttr[p].F:'','nt')+
+    K('Hotspot',hot?hot.name:'-','kr',hot?hot.inactive+' exits':'','dn')+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Age Distribution</span></div><div class="cd-b"><canvas id="w1"></canvas></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Tenure Distribution</span></div><div class="cd-b"><canvas id="w2"></canvas></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Gender Trend - Q1</span></div><div class="cd-b"><canvas id="w3"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Attrition by Region - Q1</span></div><div class="cd-b"><canvas id="w4"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Exit by Tenure</span></div><div class="cd-b"><canvas id="w5"></canvas></div></div>';
 
-  ch.w1=new Chart($('w1'),{type:'bar',data:{labels:Object.keys(D.age),datasets:[{data:Object.values(D.age),backgroundColor:C.slice(0,7)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false}},y:{grid:{color:'#F1F5F9'}}}}});
-  ch.w2=new Chart($('w2'),{type:'bar',data:{labels:Object.keys(D.tenure),datasets:[{data:Object.values(D.tenure),backgroundColor:C.slice(0,6)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false}},y:{grid:{color:'#F1F5F9'}}}}});
+  ch.w1=new Chart($('w1'),{type:'bar',data:{labels:Object.keys(D.age),datasets:[{data:Object.values(D.age),backgroundColor:C.slice(0,7)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false}},y:{grid:{color:'#334155'}}}}});
+  ch.w2=new Chart($('w2'),{type:'bar',data:{labels:Object.keys(D.tenure),datasets:[{data:Object.values(D.tenure),backgroundColor:C.slice(0,6)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false}},y:{grid:{color:'#334155'}}}}});
   const gT=['jan','feb','mar'].map(mo=>D.gender[mo]);
-  ch.w3=new Chart($('w3'),{type:'bar',data:{labels:['Jan','Feb','Mar'],datasets:[{label:'Male',data:gT.map(g=>g.M),backgroundColor:'#2563EB'},{label:'Female',data:gT.map(g=>g.F),backgroundColor:'#E11D48'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{grid:{color:'#F1F5F9'},beginAtZero:false}}}});
+  ch.w3=new Chart($('w3'),{type:'bar',data:{labels:['Jan','Feb','Mar'],datasets:[{label:'Male',data:gT.map(g=>g.M),backgroundColor:'#2563EB'},{label:'Female',data:gT.map(g=>g.F),backgroundColor:'#E11D48'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{grid:{color:'#334155'},beginAtZero:false}}}});
   const wRegs=F.r==='all'?mR:[F.r].filter(r=>mR.includes(r));
-  ch.w4=new Chart($('w4'),{type:'bar',data:{labels:wRegs.length?wRegs:mR,datasets:[{label:'Jan',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.jan?.i||0),backgroundColor:'#2563EB'},{label:'Feb',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.feb?.i||0),backgroundColor:'#EA580C'},{label:'Mar',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.mar?.i||0),backgroundColor:'#DC2626'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'}}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#F1F5F9'}}}}});
-  ch.w5=new Chart($('w5'),{type:'doughnut',data:{labels:Object.keys(D.attrTen),datasets:[{data:Object.values(D.attrTen),backgroundColor:['#DC2626','#EA580C','#CA8A04','#16A34A','#2563EB'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:9}}},datalabels:{display:true,color:'#fff',font:{size:11,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
+  ch.w4=new Chart($('w4'),{type:'bar',data:{labels:wRegs.length?wRegs:mR,datasets:[{label:'Jan',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.jan?.i||0),backgroundColor:'#2563EB'},{label:'Feb',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.feb?.i||0),backgroundColor:'#EA580C'},{label:'Mar',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.mar?.i||0),backgroundColor:'#DC2626'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'}}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'}}}}});
+  ch.w5=new Chart($('w5'),{type:'doughnut',data:{labels:Object.keys(D.attrTen),datasets:[{data:Object.values(D.attrTen),backgroundColor:['#DC2626','#EA580C','#CA8A04','#16A34A','#2563EB'],borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:9}}},datalabels:{display:true,color:'#fff',font:{size:11,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
 }
 
 // ========== GEOGRAPHY ==========
 function rGEO(F){
   const{totalA,totalI,regRows,avgCTC,pAvgCTC}=F;
   const s=[...regRows].filter(r=>r.active>0).sort((a,b)=>b.active-a.active);
-  const regTbl=s.map(r=>`<tr onclick='regionPopup(${JSON.stringify(r).replace(/'/g,"\\'")})'><td>${r.name}</td><td class="num">${fmt(r.active)}</td><td class="num">${fmt(r.inactive)}</td><td class="num ${parseFloat(r.attrRate)>1.5?'hi':''}">${r.attrRate}%</td><td class="num">${rf(r.ctc)}</td><td class="num">${r.attend.toFixed(1)}</td><td class="num ${r.otPct>10?'hi':''}">${r.otPct.toFixed(1)}%</td></tr>`).join('');
-  const stTbl=Object.entries(D.stAttr).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`<tr><td>${s}</td><td class="num ${n>50?'hi':''}">${n}</td><td class="num">${pct(n,totalI)}%</td></tr>`).join('');
-  const whTbl=Object.entries(D.wh).slice(0,12).map(([w,n])=>`<tr onclick="whPopup('${w.replace(/'/g,"\\'")}',${n},${totalA})"><td>${w}</td><td class="num">${fmt(n)}</td></tr>`).join('');
+  const regTbl=s.map(r=>'<tr onclick=\'regionPopup('+JSON.stringify(r).replace(/'/g,"\\'")+')\'><td>'+r.name+'</td><td class="num">'+fmt(r.active)+'</td><td class="num">'+fmt(r.inactive)+'</td><td class="num '+(parseFloat(r.attrRate)>1.5?'hi':'')+'">'+r.attrRate+'%</td><td class="num">'+rf(r.ctc)+'</td><td class="num">'+r.attend.toFixed(1)+'</td><td class="num '+(r.otPct>10?'hi':'')+'">'+r.otPct.toFixed(1)+'%</td></tr>').join('');
+  const stTbl=Object.entries(D.stAttr).sort((a,b)=>b[1]-a[1]).map(([s,n])=>'<tr><td>'+s+'</td><td class="num '+(n>50?'hi':'')+'">'+n+'</td><td class="num">'+pct(n,totalI)+'%</td></tr>').join('');
+  const whTbl=Object.entries(D.wh).slice(0,12).map(([w,n])=>'<tr onclick="whPopup(\''+w.replace(/'/g,"\\'")+'\','+n+','+totalA+')"><td>'+w+'</td><td class="num">'+fmt(n)+'</td></tr>').join('');
   const hAttr=regRows.filter(r=>r.inactive>0).sort((a,b)=>parseFloat(b.attrRate)-parseFloat(a.attrRate))[0];
 
-  $('pg-geo').innerHTML=`
-    ${K('Avg CTC',rf(avgCTC),'kt',F.p?'Prev: '+rf(pAvgCTC):'','nt')}
-    ${K('Avg Attendance',F.avgAtt+'d','kg',F.p?'Prev: '+F.pAvgAtt+'d':'','nt')}
-    ${K('Avg OT',F.avgOT+'%','ko',F.cCount+' records','nt')}
-    ${K('Top Region',s[0]?.name||'—','kb',fmt(s[0]?.active)+' active','nt')}
-    ${K('High Attrition',hAttr?.name||'—','kr',(hAttr?.attrRate||0)+'%','dn')}
-    ${K('Zones','4','kp','Active zones','nt')}
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Region Performance</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th>Active</th><th>Inact</th><th>Attr%</th><th>CTC</th><th>Attend</th><th>OT%</th></tr></thead><tbody>${regTbl}</tbody></table></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Region Headcount</span></div><div class="cd-b"><canvas id="g1"></canvas></div></div>
-    <div class="cd c2"><div class="cd-h"><span class="cd-t">State Attrition</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>State</th><th>Exits</th><th>Share</th></tr></thead><tbody>${stTbl}</tbody></table></div></div>
-    <div class="cd c2"><div class="cd-h"><span class="cd-t">Zone Distribution</span></div><div class="cd-b"><canvas id="g2"></canvas></div></div>
-    <div class="cd c2"><div class="cd-h"><span class="cd-t">Top Warehouses</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Warehouse</th><th>HC</th></tr></thead><tbody>${whTbl}</tbody></table></div></div>`;
+  $('pg-geo').innerHTML=
+    K('Avg CTC',rf(avgCTC),'kt',F.p?'Prev: '+rf(pAvgCTC):'','nt')+
+    K('Avg Attendance',F.avgAtt+'d','kg',F.p?'Prev: '+F.pAvgAtt+'d':'','nt')+
+    K('Avg OT',F.avgOT+'%','ko',F.cCount+' records','nt')+
+    K('Top Region',s[0]?.name||'-','kb',fmt(s[0]?.active)+' active','nt')+
+    K('High Attrition',hAttr?.name||'-','kr',(hAttr?.attrRate||0)+'%','dn')+
+    K('Zones','4','kp','Active zones','nt')+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Performance</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th>Active</th><th>Inact</th><th>Attr%</th><th>CTC</th><th>Attend</th><th>OT%</th></tr></thead><tbody>'+regTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Headcount</span></div><div class="cd-b"><canvas id="g1"></canvas></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">State Attrition</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>State</th><th>Exits</th><th>Share</th></tr></thead><tbody>'+stTbl+'</tbody></table></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Zone Distribution</span></div><div class="cd-b"><canvas id="g2"></canvas></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Top Warehouses</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Warehouse</th><th>HC</th></tr></thead><tbody>'+whTbl+'</tbody></table></div></div>';
 
   const rl=F.r==='all'?s.filter(r=>r.name!=='Corporate'&&r.name!=='Other Offices'):s;
-  ch.g1=new Chart($('g1'),{type:'bar',data:{labels:rl.map(r=>r.name),datasets:[{data:rl.map(r=>r.active),backgroundColor:rl.map((r,i)=>C[i%C.length])}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:'#F1F5F9'}}}}});
+  ch.g1=new Chart($('g1'),{type:'bar',data:{labels:rl.map(r=>r.name),datasets:[{data:rl.map(r=>r.active),backgroundColor:rl.map((r,i)=>C[i%C.length])}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:'#334155'}}}}});
   const zE=Object.entries(D.zones).sort((a,b)=>b[1]-a[1]);
-  ch.g2=new Chart($('g2'),{type:'doughnut',data:{labels:zE.map(e=>e[0]),datasets:[{data:zE.map(e=>e[1]),backgroundColor:['#DC2626','#2563EB','#16A34A','#EA580C'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:10}}},datalabels:{display:true,color:'#fff',font:{size:11,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
+  ch.g2=new Chart($('g2'),{type:'doughnut',data:{labels:zE.map(e=>e[0]),datasets:[{data:zE.map(e=>e[1]),backgroundColor:['#DC2626','#2563EB','#16A34A','#EA580C'],borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:10}}},datalabels:{display:true,color:'#fff',font:{size:11,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
 }
 
 // ========== CLIENTS & AGENCIES ==========
 function rCA(F){
   const{totalA}=F;
   const sE=Object.entries(D.sector).sort((a,b)=>b[1]-a[1]),aE=Object.entries(D.ag).sort((a,b)=>b[1].n-a[1].n),dE=Object.entries(D.desig).sort((a,b)=>b[1].n-a[1].n);
-  const secTbl=sE.map(([s,n])=>`<tr ${xF?.type==='sector'&&xF.value===s?'style="background:#FEF2F2"':''} onclick="setCross('sector','${s}')"><td>${s}</td><td class="num">${fmt(n)}</td><td class="num">${pct(n,totalA)}%</td></tr>`).join('');
-  const agTbl=aE.map(([a,v])=>`<tr onclick="agencyPopup('${a.replace(/'/g,"\\'")}',${JSON.stringify(v)})"><td>${a}</td><td class="num">${fmt(v.n)}</td><td class="num">${rf(v.ctc)}</td><td class="num">${v.att}</td><td class="num ${v.ot>10?'hi':''}">${v.ot}%</td></tr>`).join('');
-  const desTbl=dE.map(([d,v])=>`<tr onclick="desigPopup('${d.replace(/'/g,"\\'")}',${JSON.stringify(v)})" style="cursor:pointer"><td>${d}</td><td class="num">${fmt(v.n)}</td><td class="num">${rf(v.ctc)}</td></tr>`).join('');
+  const secTbl=sE.map(([s,n])=>'<tr '+(xF?.type==='sector'&&xF.value===s?'style="background:rgba(212,5,17,.15)"':'')+' onclick="setCross(\'sector\',\''+s+'\')"><td>'+s+'</td><td class="num">'+fmt(n)+'</td><td class="num">'+pct(n,totalA)+'%</td></tr>').join('');
+  const agTbl=aE.map(([a,v])=>'<tr onclick="agencyPopup(\''+a.replace(/'/g,"\\'")+'\','+JSON.stringify(v)+')"><td>'+a+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+rf(v.ctc)+'</td><td class="num">'+v.att+'</td><td class="num '+(v.ot>10?'hi':'')+'">'+v.ot+'%</td></tr>').join('');
+  const desTbl=dE.map(([d,v])=>'<tr onclick="desigPopup(\''+d.replace(/'/g,"\\'")+'\','+JSON.stringify(v)+')" style="cursor:pointer"><td>'+d+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+rf(v.ctc)+'</td></tr>').join('');
 
   const topAg=aE[0],topSec=sE[0],topWh=Object.entries(D.wh).sort((a,b)=>b[1]-a[1])[0];
   const minCTC=Math.min(...aE.map(e=>e[1].ctc)),maxCTC=Math.max(...aE.map(e=>e[1].ctc));
-  $('pg-ca').innerHTML=`
-    ${K('Agencies',Object.keys(D.ag).length,'kt','Staffing partners','nt')}
-    ${K('Largest',topAg[0],'kr',fmt(topAg[1].n)+' employees','nt')}
-    ${K('Sectors',Object.keys(D.sector).length,'kg','Client sectors','nt')}
-    ${K('Top Sector',topSec[0],'ko',fmt(topSec[1])+' employees','nt')}
-    ${K('Top Site',topWh[0],'kb',fmt(topWh[1])+' employees','nt')}
-    ${K('CTC Range','₹'+Math.round(minCTC/1000)+'K–₹'+Math.round(maxCTC/1000)+'K','kp',(maxCTC/minCTC).toFixed(1)+'x agency gap','nt')}
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Agency Performance</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK ROW FOR SCORECARD</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Agency</th><th>HC</th><th>CTC</th><th>Attend</th><th>OT%</th></tr></thead><tbody>${agTbl}</tbody></table></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Agency CTC Comparison</span></div><div class="cd-b"><canvas id="ca1"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Breakdown</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Sector</th><th>HC</th><th>Share</th></tr></thead><tbody>${secTbl}</tbody></table></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Designation Breakdown</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Designation</th><th>Count</th><th>CTC</th></tr></thead><tbody>${desTbl}</tbody></table></div></div>`;
+  $('pg-ca').innerHTML=
+    K('Agencies',Object.keys(D.ag).length,'kt','Staffing partners','nt')+
+    K('Largest',topAg[0],'kr',fmt(topAg[1].n)+' employees','nt')+
+    K('Sectors',Object.keys(D.sector).length,'kg','Client sectors','nt')+
+    K('Top Sector',topSec[0],'ko',fmt(topSec[1])+' employees','nt')+
+    K('Top Site',topWh[0],'kb',fmt(topWh[1])+' employees','nt')+
+    K('CTC Range','₹'+Math.round(minCTC/1000)+'K-₹'+Math.round(maxCTC/1000)+'K','kp',(maxCTC/minCTC).toFixed(1)+'x agency gap','nt')+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Agency Performance</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW FOR SCORECARD</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Agency</th><th>HC</th><th>CTC</th><th>Attend</th><th>OT%</th></tr></thead><tbody>'+agTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Agency CTC Comparison</span></div><div class="cd-b"><canvas id="ca1"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Breakdown</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Sector</th><th>HC</th><th>Share</th></tr></thead><tbody>'+secTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Designation Breakdown</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Designation</th><th>Count</th><th>CTC</th></tr></thead><tbody>'+desTbl+'</tbody></table></div></div>';
 
   const t10=aE.slice(0,10);
-  ch.ca1=new Chart($('ca1'),{type:'bar',data:{labels:t10.map(e=>e[0]),datasets:[{data:t10.map(e=>e[1].ctc),backgroundColor:t10.map(e=>e[1].ctc>25000?'#DC2626':e[1].ctc<17000?'#EA580C':'#2563EB')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:{display:true,color:'#374151',font:{size:8,weight:'700'},anchor:'end',align:'right',formatter:v=>rf(v)}},scales:{x:{grid:{color:'#F1F5F9'},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:8}}},y:{grid:{display:false},ticks:{font:{size:8}}}}}});
+  ch.ca1=new Chart($('ca1'),{type:'bar',data:{labels:t10.map(e=>e[0]),datasets:[{data:t10.map(e=>e[1].ctc),backgroundColor:t10.map(e=>e[1].ctc>25000?'#DC2626':e[1].ctc<17000?'#EA580C':'#2563EB')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:{display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'right',formatter:v=>rf(v)}},scales:{x:{grid:{color:'#334155'},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:8}}},y:{grid:{display:false},ticks:{font:{size:8}}}}}});
 }
 
 // ========== COMPLIANCE ==========
@@ -363,32 +362,32 @@ function rCOMP(F){
   const{m,p,avgCTC,pAvgCTC,regRows}=F;
   const cC=chS(avgCTC,p?pAvgCTC:null),aC=chS(parseFloat(F.avgAtt),p?parseFloat(F.pAvgAtt):null),oC=chS(parseFloat(F.avgOT),p?parseFloat(F.pAvgOT):null,true);
   const oH=[...regRows].sort((a,b)=>b.otPct-a.otPct)[0];
-  const attTbl=regRows.filter(r=>r.count>0).sort((a,b)=>b.attend-a.attend).map(r=>`<tr onclick='regionPopup(${JSON.stringify(r).replace(/'/g,"\\'")})'><td>${r.name}</td><td class="num">${fmt(r.count)}</td><td class="num ${r.attend<23?'hi':''}">${r.attend.toFixed(1)}</td><td class="num">${r.pAttend!=null?r.pAttend.toFixed(1):'—'}</td><td class="num ${r.otPct>10?'hi':''}">${r.otPct.toFixed(1)}%</td><td class="num">${r.pOtPct!=null?r.pOtPct.toFixed(1)+'%':'—'}</td></tr>`).join('');
+  const attTbl=regRows.filter(r=>r.count>0).sort((a,b)=>b.attend-a.attend).map(r=>'<tr onclick=\'regionPopup('+JSON.stringify(r).replace(/'/g,"\\'")+')\'><td>'+r.name+'</td><td class="num">'+fmt(r.count)+'</td><td class="num '+(r.attend<23?'hi':'')+'">'+r.attend.toFixed(1)+'</td><td class="num">'+(r.pAttend!=null?r.pAttend.toFixed(1):'-')+'</td><td class="num '+(r.otPct>10?'hi':'')+'">'+r.otPct.toFixed(1)+'%</td><td class="num">'+(r.pOtPct!=null?r.pOtPct.toFixed(1)+'%':'-')+'</td></tr>').join('');
 
-  $('pg-comp').innerHTML=`
-    ${K('Avg CTC',rf(avgCTC),'kt',cC.t,cC.c)}
-    ${K('Avg Attendance',F.avgAtt+'d','kg',aC.t,aC.c)}
-    ${K('Avg OT',F.avgOT+'%','ko',oC.t,oC.c)}
-    ${K('OT Hotspot',oH?oH.name:'—','kr',oH?oH.otPct.toFixed(1)+'%':'','dn')}
-    ${K('Wage Records',fmt(F.cCount),'kb','Current month','nt')}
-    ${K('BGV','94%','kp','Verified','nt')}
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Region Attendance & OT</span><span class="cd-tag" style="background:#FEE2E2;color:var(--red)">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th>HC</th><th>Attend</th><th>Prev</th><th>OT%</th><th>Prev OT</th></tr></thead><tbody>${attTbl}</tbody></table></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">OT% by Region — Q1</span></div><div class="cd-b"><canvas id="co1"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">CTC by Region</span></div><div class="cd-b"><canvas id="co2"></canvas></div></div>
-    <div class="cd c3"><div class="cd-h"><span class="cd-t">Attendance Trend</span></div><div class="cd-b"><canvas id="co3"></canvas></div></div>`;
+  $('pg-comp').innerHTML=
+    K('Avg CTC',rf(avgCTC),'kt',cC.t,cC.c)+
+    K('Avg Attendance',F.avgAtt+'d','kg',aC.t,aC.c)+
+    K('Avg OT',F.avgOT+'%','ko',oC.t,oC.c)+
+    K('OT Hotspot',oH?oH.name:'-','kr',oH?oH.otPct.toFixed(1)+'%':'','dn')+
+    K('Wage Records',fmt(F.cCount),'kb','Current month','nt')+
+    K('BGV','94%','kp','Verified','nt')+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Attendance & OT</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th>HC</th><th>Attend</th><th>Prev</th><th>OT%</th><th>Prev OT</th></tr></thead><tbody>'+attTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">OT% by Region - Q1</span></div><div class="cd-b"><canvas id="co1"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">CTC by Region</span></div><div class="cd-b"><canvas id="co2"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Attendance Trend</span></div><div class="cd-b"><canvas id="co3"></canvas></div></div>';
 
   const cRegs=F.r==='all'?mR:[F.r].filter(r=>mR.includes(r));
-  ch.co1=new Chart($('co1'),{type:'bar',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.ot||0),backgroundColor:'#2563EB'},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.ot||0),backgroundColor:'#EA580C'},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.ot||0),backgroundColor:'#DC2626'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'},formatter:v=>v.toFixed(1)+'%'}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#F1F5F9'}}}}});
+  ch.co1=new Chart($('co1'),{type:'bar',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.ot||0),backgroundColor:'#2563EB'},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.ot||0),backgroundColor:'#EA580C'},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.ot||0),backgroundColor:'#DC2626'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'},formatter:v=>v.toFixed(1)+'%'}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'}}}}});
 
   const cR=F.regRows.filter(r=>r.ctc>0).sort((a,b)=>b.ctc-a.ctc);
   const ds=[{label:mn[m],data:cR.map(r=>r.ctc),backgroundColor:'#D40511'}];
   if(F.p)ds.push({label:mn[F.p],data:cR.map(r=>r.pCtc||0),backgroundColor:'#2563EB'});
-  ch.co2=new Chart($('co2'),{type:'bar',data:{labels:cR.map(r=>r.name),datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'},formatter:v=>v?'₹'+Math.round(v/1000)+'K':''}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#F1F5F9'},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:8}}}}}});
+  ch.co2=new Chart($('co2'),{type:'bar',data:{labels:cR.map(r=>r.name),datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'},formatter:v=>v?'₹'+Math.round(v/1000)+'K':''}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:8}}}}}});
 
-  ch.co3=new Chart($('co3'),{type:'line',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.att||0),borderColor:'#2563EB',backgroundColor:'#2563EB',tension:.3,pointRadius:4,borderWidth:2.5},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.att||0),borderColor:'#EA580C',backgroundColor:'#EA580C',tension:.3,pointRadius:4,borderWidth:2.5},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.att||0),borderColor:'#16A34A',backgroundColor:'#16A34A',tension:.3,pointRadius:4,borderWidth:2.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#F1F5F9'}}}}});
+  ch.co3=new Chart($('co3'),{type:'line',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.att||0),borderColor:'#2563EB',backgroundColor:'#2563EB',tension:.3,pointRadius:4,borderWidth:2.5},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.att||0),borderColor:'#EA580C',backgroundColor:'#EA580C',tension:.3,pointRadius:4,borderWidth:2.5},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.att||0),borderColor:'#16A34A',backgroundColor:'#16A34A',tension:.3,pointRadius:4,borderWidth:2.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'}}}}});
 }
 
-// ========== INSIGHTS (DYNAMIC — changes with filters) ==========
+// ========== INSIGHTS (DYNAMIC) ==========
 function rIN(F){
   const{m,totalA,totalI,regRows,avgCTC,avgAtt,avgOT,g}=F;
   const total=totalA+totalI,aR=pct(totalI,total);
@@ -398,28 +397,27 @@ function rIN(F){
   const mName={jan:'January',feb:'February',mar:'March'}[m];
   const rName=F.r==='all'?'All Regions':F.r;
 
-  // Build dynamic insights based on current filter
   let cards=[];
-  cards.push(`<div class="ins" style="border-left-color:var(--tl)"><div class="ins-t">Current View: ${mName} &#183; ${rName}</div><div class="ins-p"><b>${fmt(totalA)}</b> active employees, <b>${fmt(totalI)}</b> exits (${aR}% attrition). Avg CTC <b>${rf(avgCTC)}</b>, Attendance <b>${F.avgAtt}d</b>, OT <b>${F.avgOT}%</b>. Female ratio <b>${fP}%</b>.</div></div>`);
+  cards.push('<div class="ins" style="border-left-color:var(--tl)"><div class="ins-t">Current View: '+mName+' | '+rName+'</div><div class="ins-p"><b>'+fmt(totalA)+'</b> active employees, <b>'+fmt(totalI)+'</b> exits ('+aR+'% attrition). Avg CTC <b>'+rf(avgCTC)+'</b>, Attendance <b>'+F.avgAtt+'d</b>, OT <b>'+F.avgOT+'%</b>. Female ratio <b>'+fP+'%</b>.</div></div>');
 
-  if(hot&&hot.inactive>5)cards.push(`<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">Attrition Alert: ${hot.name}</div><div class="ins-p"><b>${hot.inactive} exits</b> (${hot.attrRate}% rate) — highest in current view. ${parseFloat(hot.attrRate)>1.5?'This exceeds the 1.5% threshold. Immediate exit interviews needed.':'Within acceptable range but monitor closely.'} ${hot.ctc<18000?'Low CTC ('+rf(hot.ctc)+') may be contributing.':''}</div></div>`);
+  if(hot&&hot.inactive>5)cards.push('<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">Attrition Alert: '+hot.name+'</div><div class="ins-p"><b>'+hot.inactive+' exits</b> ('+hot.attrRate+'% rate) - highest in current view. '+(parseFloat(hot.attrRate)>1.5?'This exceeds the 1.5% threshold. Immediate exit interviews needed.':'Within acceptable range but monitor closely.')+' '+(hot.ctc<18000?'Low CTC ('+rf(hot.ctc)+') may be contributing.':'')+'</div></div>');
 
-  if(otHot&&otHot.otPct>6)cards.push(`<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">OT Warning: ${otHot.name} at ${otHot.otPct.toFixed(1)}%</div><div class="ins-p">${otHot.otPct>10?'<b>CRITICAL</b> — 3x healthy threshold. Workers are overloaded. Hire additional staff within 2 weeks or risk burnout and quality issues.':'<b>Elevated</b> — above 5% target. Review shift planning and consider adding 10-15% buffer staffing.'}</div></div>`);
+  if(otHot&&otHot.otPct>6)cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">OT Warning: '+otHot.name+' at '+otHot.otPct.toFixed(1)+'%</div><div class="ins-p">'+(otHot.otPct>10?'<b>CRITICAL</b> - 3x healthy threshold. Workers are overloaded. Hire additional staff within 2 weeks or risk burnout and quality issues.':'<b>Elevated</b> - above 5% target. Review shift planning and consider adding 10-15% buffer staffing.')+'</div></div>');
 
   if(F.r==='all'){
-    cards.push(`<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">South1 Attrition Crisis</div><div class="ins-p">South1 = <b>42-67% of all exits</b> every month. Karnataka: 88 exits in March. CTC ₹16,753 is lowest among major regions — compensation is the primary attrition driver. <b>Action:</b> Benchmark CTC against local market, implement retention bonus.</div></div>`);
-    cards.push(`<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">63% Workforce Has &lt;1yr Tenure</div><div class="ins-p"><b>10,654 of 16,947</b> employees joined within the last year. 48.6% of exits also happen in year 1. This signals onboarding failure. <b>Action:</b> Launch 30-60-90 day check-in program with buddy system at top 10 sites.</div></div>`);
-    cards.push(`<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">West 2 OT Surged 9.8% &#8594; 16.8%</div><div class="ins-p">Q1 OT escalation is <b>3x the 5% healthy threshold</b>. Avadhoot agency OT at 11.3%. If unchecked, expect increased attrition and safety incidents. <b>Action:</b> Emergency staffing audit, cap OT at 10% within 30 days.</div></div>`);
-    cards.push(`<div class="ins" style="border-left-color:var(--g)"><div class="ins-t">Female Growth: 18.4% &#8594; 20.5%</div><div class="ins-p">Female share rose by <b>+2.1pp</b> (3,120&#8594;3,429) while total HC declined. Strong diversity progress driven by South1 and West 1 hiring. <b>Target:</b> 25% by FY26-end — need ~750 more female hires.</div></div>`);
-    cards.push(`<div class="ins" style="border-left-color:var(--b)"><div class="ins-t">Agency Cost Gap: 2.1x</div><div class="ins-p">Dedha India HR charges <b>₹32,298</b> vs Needs Manpower at <b>₹15,606</b>. But Dedha delivers 29.4d attendance vs Needs at 22.8d. Cost per productive day: Dedha ₹1,099 vs Needs ₹685. <b>Action:</b> Build standardized scorecard for renewals — don't just look at CTC.</div></div>`);
-    cards.push(`<div class="ins" style="border-left-color:var(--p)"><div class="ins-t">Material Handler Pay Risk</div><div class="ins-p"><b>11,090 employees (66%)</b> are Material Handlers earning ₹17,164 — lowest paid role. Executive CTC is 2.3x higher at ₹38,691. Any market competitor offering ₹500 more will poach talent. <b>Action:</b> Create upskilling pathway to Reach Truck/Fork Lift roles (+₹6K-9K CTC).</div></div>`);
-    cards.push(`<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">March Exit Spike: +56%</div><div class="ins-p">Exits jumped <b>132&#8594;206</b> (Feb&#8594;Mar). West 1 doubled (27&#8594;62), South3 went 0&#8594;19. March-end contract cycles and appraisal-season attrition likely factors. <b>Action:</b> Pre-emptive retention conversations in Feb for next year.</div></div>`);
+    cards.push('<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">South1 Attrition Crisis</div><div class="ins-p">South1 = <b>42-67% of all exits</b> every month. Karnataka: 88 exits in March. CTC ₹16,753 is lowest among major regions - compensation is the primary attrition driver. <b>Action:</b> Benchmark CTC against local market, implement retention bonus.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">63% Workforce Has &lt;1yr Tenure</div><div class="ins-p"><b>10,654 of 16,947</b> employees joined within the last year. 48.6% of exits also happen in year 1. This signals onboarding failure. <b>Action:</b> Launch 30-60-90 day check-in program with buddy system at top 10 sites.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">West 2 OT Surged 9.8% to 16.8%</div><div class="ins-p">Q1 OT escalation is <b>3x the 5% healthy threshold</b>. Avadhoot agency OT at 11.3%. If unchecked, expect increased attrition and safety incidents. <b>Action:</b> Emergency staffing audit, cap OT at 10% within 30 days.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--g)"><div class="ins-t">Female Growth: 18.4% to 20.5%</div><div class="ins-p">Female share rose by <b>+2.1pp</b> (3,120 to 3,429) while total HC declined. Strong diversity progress driven by South1 and West 1 hiring. <b>Target:</b> 25% by FY26-end - need ~750 more female hires.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--b)"><div class="ins-t">Agency Cost Gap: 2.1x</div><div class="ins-p">Dedha India HR charges <b>₹32,298</b> vs Needs Manpower at <b>₹15,606</b>. But Dedha delivers 29.4d attendance vs Needs at 22.8d. Cost per productive day: Dedha ₹1,099 vs Needs ₹685. <b>Action:</b> Build standardized scorecard for renewals.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--p)"><div class="ins-t">Material Handler Pay Risk</div><div class="ins-p"><b>11,090 employees (66%)</b> are Material Handlers earning ₹17,164 - lowest paid role. Executive CTC is 2.3x higher at ₹38,691. Any market competitor offering ₹500 more will poach talent. <b>Action:</b> Create upskilling pathway to Reach Truck/Fork Lift roles (+₹6K-9K CTC).</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">March Exit Spike: +56%</div><div class="ins-p">Exits jumped <b>132 to 206</b> (Feb to Mar). West 1 doubled (27 to 62), South3 went 0 to 19. March-end contract cycles and appraisal-season attrition likely factors. <b>Action:</b> Pre-emptive retention conversations in Feb for next year.</div></div>');
   }
 
-  cards.push(`<div class="sum-card"><h4 style="color:var(--g)">Strengths</h4>${[['Female participation','+2.1pp'],['Overall attrition','1.2%'],['East stability','0.1% attr'],['March attend recovery','25.4d'],['BGV compliance','94%']].map(([l,v])=>`<div class="sr"><span class="sr-l">${l}</span><span class="sr-v" style="color:var(--g)">${v}</span></div>`).join('')}</div>`);
-  cards.push(`<div class="sum-card"><h4 style="color:var(--r)">Concerns</h4>${[['South1 attrition','2.2%'],['West 2 OT','16.8%'],['<1yr workforce','63%'],['Agency cost gap','2.1x'],['Mar exit spike','+56%'],['Handler pay','₹17K']].map(([l,v])=>`<div class="sr"><span class="sr-l">${l}</span><span class="sr-v" style="color:var(--r)">${v}</span></div>`).join('')}</div>`);
+  cards.push('<div class="sum-card"><h4 style="color:var(--g)">Strengths</h4>'+[['Female participation','+2.1pp'],['Overall attrition','1.2%'],['East stability','0.1% attr'],['March attend recovery','25.4d'],['BGV compliance','94%']].map(function(x){return'<div class="sr"><span class="sr-l">'+x[0]+'</span><span class="sr-v" style="color:var(--g)">'+x[1]+'</span></div>'}).join('')+'</div>');
+  cards.push('<div class="sum-card"><h4 style="color:var(--r)">Concerns</h4>'+[['South1 attrition','2.2%'],['West 2 OT','16.8%'],['<1yr workforce','63%'],['Agency cost gap','2.1x'],['Mar exit spike','+56%'],['Handler pay','₹17K']].map(function(x){return'<div class="sr"><span class="sr-l">'+x[0]+'</span><span class="sr-v" style="color:var(--r)">'+x[1]+'</span></div>'}).join('')+'</div>');
 
-  cards.push(`<div class="ins c3" style="border-left-color:var(--red)"><div class="ins-t">Action Plan for ${mName}</div><div class="ins-p"><b>This Week:</b> ${hot?hot.name+' exit interviews':'Monitor attrition'} &#183; ${otHot&&otHot.otPct>6?otHot.name+' OT audit':'OT check'} &#183; Agency scorecard draft<br><b>This Month:</b> 30-60-90 onboarding program &#183; Compensation benchmarking &#183; Buddy system pilot at top 5 sites<br><b>This Quarter:</b> Female hiring target 25% &#183; Predictive attrition model &#183; Agency consolidation 15&#8594;8-10 &#183; Handler upskilling program</div></div>`);
+  cards.push('<div class="ins c3" style="border-left-color:var(--red)"><div class="ins-t">Action Plan for '+mName+'</div><div class="ins-p"><b>This Week:</b> '+(hot?hot.name+' exit interviews':'Monitor attrition')+' | '+(otHot&&otHot.otPct>6?otHot.name+' OT audit':'OT check')+' | Agency scorecard draft<br><b>This Month:</b> 30-60-90 onboarding program | Compensation benchmarking | Buddy system pilot at top 5 sites<br><b>This Quarter:</b> Female hiring target 25% | Predictive attrition model | Agency consolidation 15 to 8-10 | Handler upskilling program</div></div>');
 
   $('pg-in').innerHTML=cards.join('');
 }
@@ -428,18 +426,18 @@ function rIN(F){
 function rSR(){
   const items=[
     ...Object.entries(D.wh).map(([w,n])=>({type:'Warehouse',name:w,detail:fmt(n)+' employees',fn:()=>{const tA=Object.values(D.wh).reduce((s,v)=>s+v,0);whPopup(w,n,tA)}})),
-    ...Object.entries(D.ag).map(([a,v])=>({type:'Agency',name:a,detail:fmt(v.n)+' emp &#183; '+rf(v.ctc),fn:()=>agencyPopup(a,v)})),
+    ...Object.entries(D.ag).map(([a,v])=>({type:'Agency',name:a,detail:fmt(v.n)+' emp | '+rf(v.ctc),fn:()=>agencyPopup(a,v)})),
     ...regs.map(r=>({type:'Region',name:r,detail:'HC: '+fmt(D.headcount[r]?.mar?.a||0),fn:()=>{$('fR').value=r;R()}})),
     ...Object.entries(D.sector).map(([s,n])=>({type:'Sector',name:s,detail:fmt(n)+' emp',fn:()=>setCross('sector',s)})),
-    ...Object.entries(D.desig).map(([d,v])=>({type:'Designation',name:d,detail:fmt(v.n)+' emp &#183; '+rf(v.ctc),fn:()=>desigPopup(d,v)}))
+    ...Object.entries(D.desig).map(([d,v])=>({type:'Designation',name:d,detail:fmt(v.n)+' emp | '+rf(v.ctc),fn:()=>desigPopup(d,v)}))
   ];
-  $('pg-sr').innerHTML=`<div class="search-wrap"><input class="search-input" id="sBox" type="text" placeholder="Search warehouses, agencies, regions, sectors, designations..." oninput="doS()"><div class="search-results" id="sRes"></div></div>`;
+  $('pg-sr').innerHTML='<div class="search-wrap"><input class="search-input" id="sBox" type="text" placeholder="Search warehouses, agencies, regions, sectors, designations..." oninput="doS()"><div class="search-results" id="sRes"></div></div>';
   window._si=items;doS();
 }
 function doS(){
   const q=($('sBox')?.value||'').toLowerCase();
   const items=(window._si||[]).filter(i=>!q||i.name.toLowerCase().includes(q)||i.type.toLowerCase().includes(q)).slice(0,20);
-  $('sRes').innerHTML=items.map(it=>`<div class="search-item" onclick="window._si[${window._si.indexOf(it)}].fn()"><h4>${it.name} <span style="color:var(--t3);font-weight:500;font-size:10px">&#183; ${it.type}</span></h4><p>${it.detail}</p></div>`).join('')||'<p style="color:var(--t3);padding:20px;text-align:center">No results</p>';
+  $('sRes').innerHTML=items.map(it=>'<div class="search-item" onclick="window._si['+window._si.indexOf(it)+'].fn()"><h4>'+it.name+' <span style="color:var(--t3);font-weight:500;font-size:10px">| '+it.type+'</span></h4><p>'+it.detail+'</p></div>').join('')||'<p style="color:var(--t3);padding:20px;text-align:center">No results</p>';
 }
 
 R();
