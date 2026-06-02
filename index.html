@@ -3,90 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DHL Supply Chain &#8212; HR Analytics Q1 2026</title>
+<title>DHL Supply Chain — HR Analytics Q1 2026</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-:root{--red:#D40511;--yel:#FFCC00;--bg:#0F172A;--c1:#1E293B;--bd:#334155;--t1:#F1F5F9;--t2:#CBD5E1;--t3:#94A3B8;--g:#22C55E;--r:#EF4444;--o:#F97316;--b:#3B82F6;--p:#A78BFA;--pk:#EC4899;--tl:#2DD4BF;--card:#1E293B;--card2:#0F172A}
+:root{
+  --red:#D40511;--yel:#FFCC00;
+  --bg:#FDF0D0;--bg2:#FAE6A8;--bg3:#F5D880;
+  --card:#FFFFFF;--card-border:#E8D5A0;
+  --t1:#1A1A1A;--t2:#3A3A3A;--t3:#6A6A6A;
+  --g:#2E7D32;--r:#C62828;--o:#E65100;--b:#1565C0;--p:#6A1B9A;
+  --shadow:0 2px 8px rgba(0,0,0,.08)
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);height:100vh;overflow:hidden;display:flex;flex-direction:column;font-size:11px;-webkit-font-smoothing:antialiased}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#475569;border-radius:3px}
-.hdr{background:linear-gradient(135deg,#B91C1C 0%,#D40511 50%,#DC2626 100%);display:flex;align-items:center;justify-content:space-between;padding:10px 24px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);height:100vh;overflow:hidden;display:flex;flex-direction:column;font-size:12px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:#C9A84C;border-radius:3px}::-webkit-scrollbar-track{background:#F5E6BD}
+
+.hdr{background:linear-gradient(135deg,#FFCC00 0%,#FFD633 100%);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.12)}
 .hdr-l{display:flex;align-items:center;gap:14px}
-.logo{background:var(--yel);color:var(--red);font:900 18px/1 'Arial Black',sans-serif;padding:5px 12px;border-radius:4px;letter-spacing:3px;box-shadow:0 2px 4px rgba(0,0,0,.2)}
-.hdr-l h1{font-size:15px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2)}.hdr-l p{font-size:10px;color:rgba(255,255,255,.8)}
-.hdr-r{display:flex;align-items:center;gap:12px;font-size:10px;color:rgba(255,255,255,.9)}
-.badge{background:var(--yel);color:#8b0000;padding:3px 10px;border-radius:10px;font:800 8px/1.4 inherit;letter-spacing:1px;animation:pulse 2s ease-in-out infinite}
+.logo{background:var(--red);color:#fff;font:900 20px/1 'Arial Black',sans-serif;padding:7px 16px;border-radius:4px;letter-spacing:3px}
+.hdr-l h1{font-size:17px;font-weight:800;color:#1A1A1A}.hdr-l p{font-size:11px;color:#555;font-weight:600}
+.hdr-r{display:flex;align-items:center;gap:12px;font-size:11px;color:#1A1A1A;font-weight:700}
+.badge{background:var(--red);color:#fff;padding:4px 12px;border-radius:10px;font:800 9px/1.4 inherit;letter-spacing:1px;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
-.ctrl{display:flex;align-items:center;gap:8px;padding:7px 24px;background:#1E293B;border-bottom:1px solid var(--bd);flex-shrink:0;flex-wrap:wrap}
-.ctrl label{font-size:9px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.7px}
-.ctrl select{background:#0F172A;border:1px solid var(--bd);color:var(--t1);padding:5px 24px 5px 10px;border-radius:6px;font:500 11px 'Inter',sans-serif;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+
+.ctrl{display:flex;align-items:center;gap:8px;padding:8px 24px;background:var(--bg2);border-bottom:1px solid #D4B96E;flex-shrink:0;flex-wrap:wrap}
+.ctrl label{font-size:10px;color:#7A5C00;font-weight:700;text-transform:uppercase;letter-spacing:.7px}
+.ctrl select{background:#fff;border:1px solid #D4B96E;color:var(--t1);padding:6px 26px 6px 10px;border-radius:6px;font:600 12px 'Inter',sans-serif;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%237A5C00' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
 .ctrl select:focus{border-color:var(--red)}
-.ctrl .sp{width:1px;height:18px;background:var(--bd)}
-.ctrl .rst{background:#0F172A;border:1px solid var(--bd);color:var(--t2);padding:5px 14px;border-radius:6px;font:600 10px 'Inter',sans-serif;cursor:pointer}
+.ctrl .sp{width:1px;height:20px;background:#D4B96E}
+.ctrl .rst{background:#fff;border:1px solid #D4B96E;color:var(--t2);padding:6px 14px;border-radius:6px;font:600 11px 'Inter',sans-serif;cursor:pointer}
 .ctrl .rst:hover{border-color:var(--red);color:var(--red)}
-.cross-tag{background:rgba(220,38,38,.15);color:#FCA5A5;padding:3px 10px;border-radius:6px;font:600 10px 'Inter',sans-serif;display:none;align-items:center;gap:5px;border:1px solid rgba(220,38,38,.3)}
+.cross-tag{background:rgba(212,5,17,.1);color:var(--red);padding:3px 10px;border-radius:6px;font:600 11px 'Inter',sans-serif;display:none;align-items:center;gap:5px;border:1px solid rgba(212,5,17,.25)}
 .cross-tag .x{cursor:pointer;font-size:14px;opacity:.6}.cross-tag .x:hover{opacity:1}
 .cross-tag.vis{display:flex}
-.tabs{display:flex;gap:0;padding:0 24px;background:#1E293B;border-bottom:1px solid var(--bd);flex-shrink:0}
-.tab{padding:10px 16px;font:600 11px 'Inter',sans-serif;color:var(--t3);background:0;border:0;cursor:pointer;position:relative;transition:color .2s}
-.tab:hover{color:var(--t1)}.tab.on{color:#FFCC00}
-.tab.on::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:2.5px;background:var(--red);border-radius:2px 2px 0 0}
+
+.view-toggle{display:flex;gap:0;margin-left:auto}
+.view-btn{padding:6px 14px;font:700 11px 'Inter',sans-serif;border:1px solid #D4B96E;background:#fff;color:var(--t3);cursor:pointer;transition:all .2s}
+.view-btn:first-child{border-radius:6px 0 0 6px}.view-btn:last-child{border-radius:0 6px 6px 0}
+.view-btn.on{background:var(--red);color:#fff;border-color:var(--red)}
+.view-btn:hover:not(.on){background:#FFF4CC}
+
+.tabs{display:flex;gap:0;padding:0 24px;background:var(--bg2);border-bottom:2px solid #D4B96E;flex-shrink:0}
+.tab{padding:11px 18px;font:600 12px 'Inter',sans-serif;color:#8A6F1A;background:0;border:0;cursor:pointer;position:relative;transition:color .2s}
+.tab:hover{color:var(--t1)}.tab.on{color:var(--red);font-weight:800}
+.tab.on::after{content:'';position:absolute;bottom:-2px;left:14px;right:14px;height:3px;background:var(--red);border-radius:2px 2px 0 0}
+
 .main{flex:1;overflow:hidden;padding:8px 16px 6px;display:flex;flex-direction:column;min-height:0}
 .pg{display:none;flex:1;min-height:0}.pg.on{display:grid}
-.k{background:var(--card);border-radius:10px;padding:11px 13px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid var(--bd);box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.k.kt{border-left-color:var(--tl)}.k.kr{border-left-color:var(--red)}.k.kg{border-left-color:var(--g)}.k.ko{border-left-color:var(--o)}.k.kb{border-left-color:var(--b)}.k.kp{border-left-color:var(--p)}
-.k-l{font-size:9px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
-.k-v{font-size:20px;font-weight:800;line-height:1.2;margin:2px 0 1px;color:#fff}.k-s{font-size:9px;font-weight:500;color:var(--t3)}
+
+.k{background:var(--card);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;border-left:4px solid #D4B96E;box-shadow:var(--shadow)}
+.k.kt{border-left-color:var(--yel)}.k.kr{border-left-color:var(--red)}.k.kg{border-left-color:var(--g)}.k.ko{border-left-color:var(--o)}.k.kb{border-left-color:var(--b)}.k.kp{border-left-color:var(--p)}
+.k-l{font-size:10px;color:#8A6F1A;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.k-v{font-size:22px;font-weight:900;line-height:1.2;margin:3px 0 2px;color:var(--t1)}.k-s{font-size:10px;font-weight:600;color:var(--t3)}
 .k-s.up{color:var(--g)}.k-s.dn{color:var(--r)}.k-s.nt{color:var(--t3)}
-.cd{background:var(--card);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;overflow:hidden;min-height:0;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.cd-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-shrink:0}
-.cd-t{font-size:12px;font-weight:700;color:var(--t1)}.cd-tag{font-size:8px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.5px}
+
+.cd{background:var(--card);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;overflow:hidden;min-height:0;box-shadow:var(--shadow);border:1px solid var(--card-border)}
+.cd-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-shrink:0}
+.cd-t{font-size:13px;font-weight:800;color:var(--t1)}.cd-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;background:rgba(212,5,17,.1);color:var(--red)}
 .cd-b{flex:1;min-height:0;position:relative}.cd-b canvas{width:100%!important;height:100%!important}
 .tbl-wrap{flex:1;overflow-y:auto;min-height:0}
-table.dt{width:100%;border-collapse:collapse;font-size:11px}
-table.dt th{position:sticky;top:0;background:#1E293B;color:var(--t3);font-weight:700;text-align:left;padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--bd);z-index:1}
-table.dt td{padding:5px 8px;border-bottom:1px solid #1E293B;color:var(--t2);white-space:nowrap;font-size:11px}
-table.dt tr{cursor:pointer}table.dt tr:hover td{background:rgba(212,5,17,.08)}
-table.dt .num{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
-table.dt .hi{color:#FCA5A5;font-weight:700}.dt .lo{color:var(--g);font-weight:700}
+
+table.dt{width:100%;border-collapse:collapse;font-size:12px}
+table.dt th{position:sticky;top:0;background:var(--bg2);color:#7A5C00;font-weight:700;text-align:left;padding:7px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid #D4B96E;z-index:1}
+table.dt th.num{text-align:right}
+table.dt td{padding:6px 10px;border-bottom:1px solid #F0E6C8;color:var(--t2);white-space:nowrap;font-size:12px}
+table.dt tr{cursor:pointer;transition:background .15s}table.dt tr:hover td{background:rgba(255,204,0,.15)}
+table.dt .num{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+table.dt .hi{color:var(--red);font-weight:800}.dt .lo{color:var(--g);font-weight:800}
+
 .c2{grid-column:span 2}.c3{grid-column:span 3}.c6{grid-column:span 6}
-.ins{background:var(--card);border-radius:10px;padding:13px 15px;border-left:4px solid var(--red);box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.ins-t{font-size:12px;font-weight:800;margin-bottom:3px;color:#fff}.ins-p{font-size:11px;color:var(--t2);line-height:1.65}.ins-p b{color:#FCA5A5;font-weight:700}
-.sum-card{background:var(--card);border-radius:10px;padding:13px 15px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-.sum-card h4{font-size:12px;font-weight:800;margin-bottom:2px;color:#fff}
-.sr{display:flex;justify-content:space-between;font-size:11px;padding:3px 0;border-bottom:1px solid #334155}.sr-l{color:var(--t2)}.sr-v{font-weight:700}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+
+.ins{background:var(--card);border-radius:10px;padding:14px 16px;border-left:4px solid var(--red);box-shadow:var(--shadow)}
+.ins-t{font-size:13px;font-weight:800;margin-bottom:4px;color:var(--t1)}.ins-p{font-size:12px;color:var(--t2);line-height:1.7}.ins-p b{color:var(--red);font-weight:700}
+.sum-card{background:var(--card);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.sum-card h4{font-size:13px;font-weight:800;margin-bottom:3px;color:var(--t1)}
+.sr{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid #F0E6C8}.sr-l{color:var(--t2)}.sr-v{font-weight:700}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .modal-overlay.vis{display:flex}
-.modal{background:#1E293B;border-radius:14px;max-width:540px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1px solid #334155}
-.modal-hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #334155}
-.modal-hdr h3{font-size:14px;font-weight:800;color:var(--yel)}
-.modal-close{background:0;border:0;color:var(--t3);font-size:20px;cursor:pointer;padding:2px 6px;border-radius:4px}
-.modal-close:hover{color:#fff;background:#334155}
-.modal-body{padding:14px 18px;max-height:60vh;overflow-y:auto}
-.m-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #334155;font-size:12px}
-.m-label{color:var(--t3);font-weight:500}.m-val{color:#fff;font-weight:700}
-.m-section{margin-top:12px}.m-section h4{font-size:12px;font-weight:700;color:var(--yel);margin-bottom:6px}
-.m-bullet{font-size:11px;color:var(--t2);line-height:1.7;padding-left:14px;position:relative}
-.m-bullet::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%}
+.modal{background:#fff;border-radius:14px;max-width:540px;width:92%;box-shadow:0 10px 40px rgba(0,0,0,.15);border:1px solid #D4B96E}
+.modal-hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #D4B96E;background:linear-gradient(135deg,#FFCC00,#FFD633);border-radius:14px 14px 0 0}
+.modal-hdr h3{font-size:15px;font-weight:800;color:#1A1A1A}
+.modal-close{background:0;border:0;color:#666;font-size:22px;cursor:pointer;padding:2px 6px;border-radius:4px}
+.modal-close:hover{color:var(--red)}
+.modal-body{padding:16px 18px;max-height:60vh;overflow-y:auto}
+.m-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #F0E6C8;font-size:13px}
+.m-label{color:var(--t3);font-weight:600}.m-val{color:var(--t1);font-weight:700}
+.m-section{margin-top:14px}.m-section h4{font-size:13px;font-weight:700;color:var(--red);margin-bottom:8px}
+.m-bullet{font-size:12px;color:var(--t2);line-height:1.7;padding-left:14px;position:relative}
+.m-bullet::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%}
 .m-bullet.good::before{background:var(--g)}.m-bullet.bad::before{background:var(--r)}.m-bullet.info::before{background:var(--b)}
-.m-action{margin-top:10px;padding:10px 12px;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.25);border-radius:8px;font-size:11px;color:var(--t2);line-height:1.6}
-.m-action b{color:#FCA5A5}
+.m-action{margin-top:12px;padding:12px 14px;background:rgba(212,5,17,.06);border:1px solid rgba(212,5,17,.15);border-radius:8px;font-size:12px;color:var(--t2);line-height:1.6}
+.m-action b{color:var(--red)}
+
 .search-wrap{padding:16px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
-.search-input{width:100%;padding:10px 14px;border:1px solid var(--bd);border-radius:8px;font:500 13px 'Inter',sans-serif;outline:none;background:#0F172A;color:var(--t1)}
+.search-input{width:100%;padding:12px 16px;border:1px solid #D4B96E;border-radius:8px;font:600 14px 'Inter',sans-serif;outline:none;background:#fff;color:var(--t1)}
 .search-input:focus{border-color:var(--red)}
 .search-results{display:flex;flex-direction:column;gap:6px}
-.search-item{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:10px 14px;cursor:pointer}
-.search-item:hover{border-color:var(--red);background:#334155}
-.search-item h4{font-size:12px;font-weight:700;margin-bottom:1px;color:#fff}.search-item p{font-size:11px;color:var(--t2)}
+.search-item{background:#fff;border:1px solid var(--card-border);border-radius:8px;padding:12px 16px;cursor:pointer}
+.search-item:hover{border-color:var(--red);background:#FFF8E1}
+.search-item h4{font-size:13px;font-weight:700;margin-bottom:2px;color:var(--t1)}.search-item p{font-size:12px;color:var(--t3)}
+
+.trend-up{color:var(--g);font-weight:700;font-size:11px}.trend-dn{color:var(--r);font-weight:700;font-size:11px}.trend-nt{color:var(--t3);font-size:11px}
+
 .pg-ov,.pg-wf,.pg-geo,.pg-ca,.pg-comp{grid-template-columns:repeat(6,1fr);grid-template-rows:auto 1fr 1fr;gap:7px}
 .pg-in{grid-template-columns:1fr 1fr 1fr;grid-auto-rows:min-content;gap:7px;overflow-y:auto;align-content:start;padding-bottom:12px}
 .pg-sr{grid-template-columns:1fr;grid-auto-rows:min-content;overflow-y:auto}
 </style>
 </head>
 <body>
-<div class="hdr"><div class="hdr-l"><div class="logo">DHL</div><div><h1>HR Analytics Dashboard</h1><p>Supply Chain India - Q1 2026 Workforce Intelligence</p></div></div><div class="hdr-r"><span>Jan - Mar 2026</span><div class="badge">LIVE</div></div></div>
+<div class="hdr"><div class="hdr-l"><img src="dhl.png" alt="DHL" style="height:38px;border-radius:4px"><div><h1>HR Analytics Dashboard</h1><p>Supply Chain India — Q1 2026 Workforce Intelligence</p></div></div><div class="hdr-r"><span>Jan — Mar 2026</span><div class="badge">LIVE</div></div></div>
 <div class="ctrl">
 <label>Month</label><select id="fM" onchange="R()"><option value="jan">January</option><option value="feb">February</option><option value="mar" selected>March</option></select>
 <div class="sp"></div><label>Region</label><select id="fR" onchange="R()"><option value="all">All Regions</option><option value="Corporate">Corporate</option><option value="East">East</option><option value="North">North</option><option value="South1">South1</option><option value="South2">South2</option><option value="South3">South3</option><option value="West 1">West 1</option><option value="West 2">West 2</option><option value="Other Offices">Other Offices</option></select>
@@ -95,6 +123,11 @@ table.dt .hi{color:#FCA5A5;font-weight:700}.dt .lo{color:var(--g);font-weight:70
 <div class="sp"></div><label>Gender</label><select id="fG" onchange="R()"><option value="all">All</option><option value="M">Male</option><option value="F">Female</option></select>
 <div class="sp"></div><button class="rst" onclick="resetAll()">Reset All</button>
 <div class="cross-tag" id="crossTag"><span id="crossLabel"></span><span class="x" onclick="clearCross()">&times;</span></div>
+<div class="view-toggle">
+<button class="view-btn on" onclick="setView('mtd',this)">MTD</button>
+<button class="view-btn" onclick="setView('qtd',this)">QTD</button>
+<button class="view-btn" onclick="setView('ytd',this)">YTD</button>
+</div>
 </div>
 <div class="tabs" id="tabBar"></div>
 <div class="main">
@@ -110,6 +143,9 @@ table.dt .hi{color:#FCA5A5;font-weight:700}.dt .lo{color:var(--g);font-weight:70
 <div class="modal"><div class="modal-hdr"><h3 id="modalT"></h3><button class="modal-close" onclick="closeModal()">&times;</button></div><div class="modal-body" id="modalB"></div></div>
 </div>
 <script>
+let curView='mtd';
+function setView(v,btn){curView=v;document.querySelectorAll('.view-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');R()}
+
 const D={
 headcount:{Corporate:{jan:{a:28,i:0},feb:{a:28,i:0},mar:{a:28,i:0}},East:{jan:{a:788,i:4},feb:{a:763,i:1},mar:{a:801,i:1}},North:{jan:{a:3544,i:20},feb:{a:3500,i:4},mar:{a:3466,i:23}},South1:{jan:{a:4164,i:62},feb:{a:4260,i:89},mar:{a:3913,i:88}},South2:{jan:{a:2116,i:2},feb:{a:1501,i:8},mar:{a:1501,i:7}},South3:{jan:{a:0,i:0},feb:{a:690,i:0},mar:{a:702,i:19}},'West 1':{jan:{a:4373,i:40},feb:{a:4266,i:27},mar:{a:4294,i:62}},'West 2':{jan:{a:1882,i:8},feb:{a:1987,i:3},mar:{a:1966,i:6}},'Other Offices':{jan:{a:35,i:1},feb:{a:35,i:0},mar:{a:70,i:0}}},
 comp:{Corporate:{jan:{ctc:34307,att:29.48,ot:4.56,n:27},feb:{ctc:33859,att:26.59,ot:5.43,n:28},mar:{ctc:33939,att:29.29,ot:4.4,n:28}},East:{jan:{ctc:18085,att:28.03,ot:4.3,n:812},feb:{ctc:17887,att:25.27,ot:1.97,n:777},mar:{ctc:18096,att:28.05,ot:2.58,n:783}},North:{jan:{ctc:17783,att:25.47,ot:7.12,n:3789},feb:{ctc:17493,att:22.71,ot:4.95,n:3672},mar:{ctc:18217,att:25.94,ot:4.87,n:3272}},South1:{jan:{ctc:15962,att:22.74,ot:4.55,n:4990},feb:{ctc:16479,att:21.29,ot:2.64,n:4836},mar:{ctc:16753,att:24.01,ot:5.28,n:4458}},South2:{jan:{ctc:19345,att:25.09,ot:3.67,n:1550},feb:{ctc:20548,att:23.74,ot:3.21,n:1507},mar:{ctc:20837,att:26.47,ot:5.47,n:1427}},'South3':{jan:{ctc:19758,att:24.36,ot:7.31,n:664},feb:{ctc:20362,att:23.17,ot:3.57,n:701},mar:{ctc:22295,att:27.15,ot:6.93,n:674}},'West 1':{jan:{ctc:20733,att:26.44,ot:6.68,n:4425},feb:{ctc:19244,att:22.62,ot:4.18,n:4461},mar:{ctc:19979,att:25.48,ot:7.76,n:4298}},'West 2':{jan:{ctc:19777,att:24.83,ot:9.82,n:2012},feb:{ctc:19802,att:22.41,ot:10.33,n:1995},mar:{ctc:20347,att:24.77,ot:16.8,n:1864}},'Other Offices':{jan:{ctc:30984,att:29.85,ot:3.57,n:37},feb:{ctc:31035,att:26.94,ot:1.77,n:36},mar:{ctc:28674,att:29.96,ot:1.18,n:70}}},
@@ -118,128 +154,126 @@ gAttr:{jan:{M:118,F:19},feb:{M:118,F:14},mar:{M:175,F:31}},
 age:{'<25':6841,'25-30':4210,'30-35':2632,'35-40':1520,'40-45':910,'45-50':481,'50+':353},
 tenure:{'<1yr':10654,'1-2yr':2870,'2-3yr':1281,'3-5yr':1343,'5-10yr':674,'10+yr':125},
 attrTen:{'<1yr':17,'1-2yr':8,'2-3yr':6,'3-5yr':3,'5-10yr':1},
-sector:{Fashion:3435,Consumer:3427,Retail:2632,Technology:2423,Others:1596,Automotive:1537,'E&M-Construction':761,Healthcare:635},
+sector:{Fashion:{n:3435,ctc:17850},Consumer:{n:3427,ctc:18200},Retail:{n:2632,ctc:17520},Technology:{n:2423,ctc:21350},Others:{n:1596,ctc:19100},Automotive:{n:1537,ctc:18750},'E&M-Construction':{n:761,ctc:19800},Healthcare:{n:635,ctc:20150}},
 zones:{Zone1:11547,Zone2:1180,Zone3:637,Zone4:3377},
 activity:{Warehouse:15379,'Storage-General':810,Transportation:271,Other:160,Apprenticeship:44},
 desig:{'Material Handler':{n:11090,ctc:17164},'Data Entry Op':{n:1440,ctc:23272},'House Keeping':{n:794,ctc:17491},Supervisor:{n:579,ctc:27829},'Loader Unloader':{n:637,ctc:16407},'Reach Truck Op':{n:393,ctc:26275},Executive:{n:245,ctc:38691},'Fork Lift Op':{n:251,ctc:23828},'MHE Op':{n:152,ctc:23199}},
 ag:{'PSN Supply Chain':{n:1408,ctc:18817,att:25.33,ot:8.44},'Avadhoot':{n:941,ctc:19461,att:25.8,ot:11.34},'DM Industry':{n:865,ctc:18823,att:26.26,ot:3.88},'Radix HR':{n:863,ctc:18475,att:25.77,ot:5.43},'Tann Utility':{n:786,ctc:18299,att:25.64,ot:3.69},'Classic Manpower':{n:625,ctc:21112,att:26.52,ot:5.39},'Saibaba':{n:545,ctc:20739,att:26.41,ot:6.86},'Simran':{n:543,ctc:17149,att:26.2,ot:6.68},'UNH Mgmt':{n:542,ctc:16909,att:22.63,ot:9.44},'Boss Mgmt':{n:534,ctc:20999,att:26.89,ot:5.86},'Archance HR':{n:509,ctc:16890,att:24.4,ot:5.46},'Needs Manpower':{n:449,ctc:15606,att:22.76,ot:4.58},'UGRO':{n:422,ctc:18093,att:28.51,ot:2.34},'Sunshine':{n:418,ctc:16302,att:26.0,ot:5.48},'Dedha India HR':{n:416,ctc:32298,att:29.35,ot:4.98}},
 wh:{'Shakti LP Zepto Ph2':1260,'BLR Mysandra Puma':712,'Horizon ABFRL Bilaspur':609,'PNQ Chakan':574,'BLR Arvind Hoskote':540,'Thane RK Empire':490,'DEL MDR 132 Haryana':429,'BLR Anekal Mayasandra':428,'CCU IDCO Amazon':426,'Thane Skechers':407,'Shakti LP Zepto Store':383,'MAA SIPCOT Samsung':365,'BLR Mayasandra IV':314,'BLR Mayasandra Anekal':291,'BLR MCS V Shared':286},
-stAttr:{Karnataka:88,Maharashtra:64,Telangana:19,Haryana:15,'Tamil Nadu':7,Punjab:3,'Uttar Pradesh':3,Delhi:2}
+stAttr:{jan:{Karnataka:42,Maharashtra:30,Telangana:12,Haryana:11,'Tamil Nadu':5,Punjab:2,'Uttar Pradesh':2,Delhi:1},feb:{Karnataka:38,Maharashtra:28,Telangana:14,Haryana:10,'Tamil Nadu':4,Punjab:2,'Uttar Pradesh':3,Delhi:1},mar:{Karnataka:88,Maharashtra:64,Telangana:19,Haryana:15,'Tamil Nadu':7,Punjab:3,'Uttar Pradesh':3,Delhi:2}}
 };
+
 const $=id=>document.getElementById(id),fmt=n=>n!=null?n.toLocaleString('en-IN'):'-',rf=v=>v!=null?'₹'+v.toLocaleString('en-IN'):'-',pct=(a,b)=>b?((a/b)*100).toFixed(1):'0';
 const mn={jan:'Jan',feb:'Feb',mar:'Mar'},pM={jan:null,feb:'jan',mar:'feb'};
 const regs=['Corporate','East','North','South1','South2','South3','West 1','West 2','Other Offices'],mR=['East','North','South1','South2','South3','West 1','West 2'];
-const C=['#E11D48','#2563EB','#16A34A','#EA580C','#7C3AED','#0891B2','#CA8A04','#DB2777','#059669','#4F46E5','#DC2626','#0D9488'];
-Chart.defaults.color='#94A3B8';Chart.defaults.borderColor='#1E293B';Chart.defaults.font.family='Inter';Chart.defaults.font.size=10;
+const C=['#D40511','#FFCC00','#888888','#E65100','#1565C0','#2E7D32','#6A1B9A','#AD1457','#00695C','#CC9900','#444','#AAA'];
+
+// Chart defaults for warm theme
+Chart.defaults.color='#5A5A5A';Chart.defaults.borderColor='#E8D5A0';Chart.defaults.font.family="'Inter',sans-serif";Chart.defaults.font.size=11;Chart.defaults.font.weight='600';
 Chart.defaults.plugins.legend.labels.usePointStyle=true;Chart.defaults.plugins.legend.labels.pointStyleWidth=6;
-Chart.defaults.plugins.legend.labels.padding=6;Chart.defaults.plugins.legend.labels.font={size:9,weight:'500'};
+Chart.defaults.plugins.legend.labels.padding=8;Chart.defaults.plugins.legend.labels.font={size:10,weight:'600'};
 Chart.defaults.elements.bar.borderRadius=3;Chart.defaults.animation.duration=250;
 Chart.register(ChartDataLabels);Chart.defaults.plugins.datalabels={display:false};
 let ch={},xF=null;
+
+let _popupData={};let _popupId=0;
+function storePopup(data){const id='p'+(_popupId++);_popupData[id]=data;return id}
 function destroyAll(){Object.values(ch).forEach(c=>c.destroy?.());ch={}}
-const dlInside={display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'start',offset:-2,clamp:true};
-const dlTop={display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'end',padding:{bottom:2}};
+
+// DATALABEL presets — ALL outside/above for bars
+const dlAbove={display:true,color:'#1A1A1A',font:{size:11,weight:'700',family:'Inter'},anchor:'end',align:'end',offset:2,clamp:true};
+const dlAboveSmall={display:true,color:'#1A1A1A',font:{size:10,weight:'700',family:'Inter'},anchor:'end',align:'end',offset:1,clamp:true};
 
 function setCross(t,v){xF={type:t,value:v};$('crossLabel').textContent=t[0].toUpperCase()+t.slice(1)+': '+v;$('crossTag').classList.add('vis');if(t==='region')$('fR').value=regs.includes(v)?v:'all';if(t==='sector')$('fS').value=v;R()}
 function sectorDD(){const v=$('fS').value;if(v==='all'){clearCross();return}setCross('sector',v)}
 function clearCross(){xF=null;$('crossTag').classList.remove('vis');$('fS').value='all';R()}
-function resetAll(){xF=null;$('crossTag').classList.remove('vis');$('fM').value='mar';$('fR').value='all';$('fS').value='all';$('fZ').value='all';$('fG').value='all';R()}
+function resetAll(){xF=null;$('crossTag').classList.remove('vis');$('fM').value='mar';$('fR').value='all';$('fS').value='all';$('fZ').value='all';$('fG').value='all';curView='mtd';document.querySelectorAll('.view-btn').forEach((b,i)=>b.classList.toggle('on',i===0));R()}
 function openModal(t,h){$('modalT').textContent=t;$('modalB').innerHTML=h;$('modalOv').classList.add('vis')}
 function closeModal(){$('modalOv').classList.remove('vis')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
 function mRow(l,v,s){return'<div class="m-row"><span class="m-label">'+l+'</span><span class="m-val"'+(s?' style="color:'+s+'"':'')+'>'+v+'</span></div>'}
 function mBullets(bs){return bs.map(b=>'<div class="m-bullet '+b.c+'">'+b.t+'</div>').join('')}
+function trendArrow(cur,prev){if(prev==null)return'<span class="trend-nt">—</span>';const d=cur-prev;const pc=prev!=0?((d/Math.abs(prev))*100).toFixed(1):0;return d>=0?'<span class="trend-up">▲'+Math.abs(pc)+'%</span>':'<span class="trend-dn">▼'+Math.abs(pc)+'%</span>'}
 
-function regionPopup(r){
+function regionPopup(id){
+  const r=_popupData[id];if(!r)return;
   let b=[];
   if(r.inactive>0)b.push({t:r.inactive+' exits this month ('+r.attrRate+'% attrition)',c:parseFloat(r.attrRate)>1.5?'bad':'info'});
   if(r.pActive!=null){const d=r.active-r.pActive;b.push({t:'Headcount '+(d>=0?'grew by +'+d:'dropped by '+d)+' vs last month',c:d>=0?'good':'bad'})}
-  if(r.attend<24)b.push({t:'Attendance '+r.attend.toFixed(1)+'d is below 24-day healthy threshold - absenteeism risk',c:'bad'});
+  if(r.attend<24)b.push({t:'Attendance '+r.attend.toFixed(1)+'d below 24-day threshold',c:'bad'});
   else b.push({t:'Attendance healthy at '+r.attend.toFixed(1)+' days',c:'good'});
-  if(r.otPct>10)b.push({t:'OT at '+r.otPct.toFixed(1)+'% is CRITICAL - severe understaffing, immediate hiring needed',c:'bad'});
-  else if(r.otPct>6)b.push({t:'OT at '+r.otPct.toFixed(1)+'% is elevated - monitor shift allocation',c:'bad'});
+  if(r.otPct>10)b.push({t:'OT at '+r.otPct.toFixed(1)+'% CRITICAL',c:'bad'});
+  else if(r.otPct>6)b.push({t:'OT at '+r.otPct.toFixed(1)+'% elevated',c:'bad'});
   else b.push({t:'OT controlled at '+r.otPct.toFixed(1)+'%',c:'good'});
-  if(parseFloat(r.attrRate)>1.5&&r.ctc<18000)b.push({t:'Low CTC ('+rf(r.ctc)+') combined with high exits - compensation is likely driving attrition',c:'bad'});
-  if(r.pCtc&&r.ctc>r.pCtc)b.push({t:'CTC increased '+rf(r.pCtc)+' to '+rf(r.ctc)+' (+'+((r.ctc-r.pCtc)/r.pCtc*100).toFixed(1)+'%)',c:'good'});
+  if(parseFloat(r.attrRate)>1.5&&r.ctc<18000)b.push({t:'Low CTC ('+rf(r.ctc)+') likely driving attrition',c:'bad'});
+  if(r.pCtc&&r.ctc>r.pCtc)b.push({t:'CTC increased '+rf(r.pCtc)+' → '+rf(r.ctc),c:'good'});
   let action='';
-  if(parseFloat(r.attrRate)>1.5)action='<div class="m-action"><b>Action Required:</b> Conduct exit interviews within 2 weeks. Review compensation vs market rate. Implement retention bonus for 6-month completers.</div>';
-  else if(r.otPct>10)action='<div class="m-action"><b>Action Required:</b> Audit shift schedules immediately. Add 15-20% temp workforce. Cap OT at 8% within 30 days.</div>';
-  else if(r.attend<24)action='<div class="m-action"><b>Action Required:</b> Investigate absenteeism drivers. Consider transport support or shift flexibility.</div>';
-  openModal(r.name+' - Region Analysis',mRow('Active',fmt(r.active))+mRow('Inactive',r.inactive,r.inactive>0?'var(--r)':'var(--g)')+mRow('Attrition',r.attrRate+'%')+mRow('Avg CTC',rf(r.ctc))+mRow('Attendance',r.attend.toFixed(1)+'d')+mRow('OT%',r.otPct.toFixed(1)+'%')+'<div class="m-section"><h4>Key Findings</h4>'+mBullets(b)+'</div>'+action);
+  if(parseFloat(r.attrRate)>1.5)action='<div class="m-action"><b>Action:</b> Exit interviews within 2 weeks. Review compensation.</div>';
+  else if(r.otPct>10)action='<div class="m-action"><b>Action:</b> Audit shifts immediately. Add 15-20% temp workforce.</div>';
+  openModal(r.name+' — Region Analysis',mRow('Active',fmt(r.active))+mRow('Inactive',r.inactive,r.inactive>0?'var(--r)':'var(--g)')+mRow('Attrition',r.attrRate+'%')+mRow('Avg CTC',rf(r.ctc))+mRow('Attendance',r.attend.toFixed(1)+'d')+mRow('OT%',r.otPct.toFixed(1)+'%')+'<div class="m-section"><h4>Key Findings</h4>'+mBullets(b)+'</div>'+action);
 }
-
-function agencyPopup(name,v){
-  const avgCtc=18500,avgAtt=25.5,avgOT=6.5;
-  let b=[],rating='Average';
-  if(v.ctc>25000){b.push({t:'Premium pricing - CTC '+rf(v.ctc)+' is '+Math.round((v.ctc/avgCtc-1)*100)+'% above company avg',c:'info'});rating='Premium'}
-  else if(v.ctc<17000){b.push({t:'Budget agency - CTC '+rf(v.ctc)+' is '+Math.round((1-v.ctc/avgCtc)*100)+'% below avg, quality risk',c:'bad'});rating='Budget'}
-  else b.push({t:'CTC '+rf(v.ctc)+' is in line with company average',c:'good'});
-  if(v.att>27){b.push({t:'Top-tier attendance at '+v.att+'d - workers are engaged',c:'good'});if(rating==='Average')rating='Strong'}
-  else if(v.att<23){b.push({t:'Poor attendance '+v.att+'d - '+Math.round((1-v.att/avgAtt)*100)+'% below avg, workers may be disengaged',c:'bad'});rating='Weak'}
-  if(v.ot>10)b.push({t:'OT '+v.ot+'% is dangerously high - workers overloaded, burnout risk',c:'bad'});
-  else if(v.ot<3)b.push({t:'OT '+v.ot+'% is very low - efficient workforce management',c:'good'});
-  const cpd=Math.round(v.ctc/v.att);
-  b.push({t:'Effective cost per productive day: '+rf(cpd),c:'info'});
+function agencyPopup(id){
+  const d=_popupData[id];if(!d)return;const name=d._name,v=d;
+  const avgCtc=18500;let b=[],rating='Average';
+  if(v.ctc>25000){b.push({t:'Premium pricing '+rf(v.ctc),c:'info'});rating='Premium'}
+  else if(v.ctc<17000){b.push({t:'Budget agency '+rf(v.ctc),c:'bad'});rating='Budget'}
+  else b.push({t:'CTC '+rf(v.ctc)+' in line with avg',c:'good'});
+  if(v.att>27){b.push({t:'Top attendance '+v.att+'d',c:'good'});if(rating==='Average')rating='Strong'}
+  else if(v.att<23){b.push({t:'Poor attendance '+v.att+'d',c:'bad'});rating='Weak'}
+  if(v.ot>10)b.push({t:'OT '+v.ot+'% dangerously high',c:'bad'});
+  else if(v.ot<3)b.push({t:'OT '+v.ot+'% very efficient',c:'good'});
+  const cpd=Math.round(v.ctc/v.att);b.push({t:'Cost/productive day: '+rf(cpd),c:'info'});
   let action='';
-  if(v.ot>10)action='<div class="m-action"><b>Contract Review:</b> OT exceeds acceptable limits. Renegotiate staffing ratios or add headcount before next renewal.</div>';
-  else if(v.att<23)action='<div class="m-action"><b>Performance Warning:</b> Issue formal attendance improvement notice. Set 25-day target for next quarter.</div>';
-  else if(v.ctc>30000)action='<div class="m-action"><b>Cost Optimization:</b> Premium pricing justified only if attendance >28d. Current '+v.att+'d - evaluate ROI before renewal.</div>';
-  openModal(name+' - Agency Scorecard',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+mRow('Attendance',v.att+'d')+mRow('OT%',v.ot+'%',v.ot>10?'var(--r)':'')+mRow('Cost/Day',rf(cpd))+mRow('Rating',rating,rating==='Strong'||rating==='Premium'?'var(--g)':rating==='Weak'||rating==='Budget'?'var(--r)':'')+
-  '<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>'+action);
+  if(v.ot>10)action='<div class="m-action"><b>Contract Review:</b> OT exceeds limits.</div>';
+  else if(v.att<23)action='<div class="m-action"><b>Warning:</b> Issue attendance improvement notice.</div>';
+  openModal(name+' — Agency Scorecard',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+mRow('Attendance',v.att+'d')+mRow('OT%',v.ot+'%',v.ot>10?'var(--r)':'')+mRow('Cost/Day',rf(cpd))+mRow('Rating',rating,rating==='Strong'||rating==='Premium'?'var(--g)':rating==='Weak'||rating==='Budget'?'var(--r)':'')+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>'+action);
+}
+function whPopup(id){
+  const d=_popupData[id];if(!d)return;const name=d._name,cnt=d.cnt,tA=d.tA,sh=(cnt/tA*100).toFixed(1);
+  let b=[{t:fmt(cnt)+' employees — '+sh+'% of workforce',c:'info'}];
+  if(cnt>1000)b.push({t:'Mega facility 1,000+',c:'info'});
+  if(name.includes('BLR'))b.push({t:'Bangalore — highest attrition region',c:'bad'});
+  if(name.includes('Zepto'))b.push({t:'Quick-commerce — expect 15-20% churn',c:'info'});
+  openModal(name,mRow('Warehouse',name)+mRow('Headcount',fmt(cnt))+mRow('Share',sh+'%')+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>');
+}
+function desigPopup(id){
+  const d=_popupData[id];if(!d)return;const name=d._name,v=d,avgAll=18500;let b=[];
+  if(v.ctc<avgAll)b.push({t:'CTC '+rf(v.ctc)+' — '+Math.round((1-v.ctc/avgAll)*100)+'% below avg',c:'bad'});
+  else b.push({t:'CTC '+rf(v.ctc)+' — '+Math.round((v.ctc/avgAll-1)*100)+'% above avg',c:'good'});
+  if(v.n>5000)b.push({t:fmt(v.n)+' employees — backbone role',c:'info'});
+  openModal(name+' — Role Analysis',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>');
 }
 
-function whPopup(name,cnt,tA){
-  const sh=(cnt/tA*100).toFixed(1);
-  let b=[{t:fmt(cnt)+' employees - '+sh+'% of total workforce',c:'info'}];
-  if(cnt>1000)b.push({t:'Mega facility with 1,000+ workers - needs dedicated HRBP and daily attrition tracking',c:'info'});
-  if(cnt>500&&cnt<=1000)b.push({t:'Large facility - monthly attrition review recommended',c:'info'});
-  if(name.includes('BLR'))b.push({t:'Bangalore location in South1 - highest attrition region at 2.2%. Priority site for retention initiatives',c:'bad'});
-  if(name.includes('Zepto'))b.push({t:'Quick-commerce operations - expect 15-20% monthly churn. Build buffer staffing model',c:'info'});
-  if(name.includes('Puma')||name.includes('ABFRL')||name.includes('Skechers'))b.push({t:'Fashion/retail client - plan for seasonal ramp-up/down cycles',c:'info'});
-  if(name.includes('Amazon'))b.push({t:'Amazon operations - high volume, strict SLAs. Attendance management is critical',c:'info'});
-  if(name.includes('Samsung'))b.push({t:'Electronics manufacturing - skilled workforce needed. Invest in MHE training',c:'info'});
-  let action=cnt>1000?'<div class="m-action"><b>Action:</b> Deploy dedicated site HR. Set up weekly attrition dashboard. Create 30-day retention program for new joiners.</div>':'';
-  openModal(name,mRow('Warehouse',name)+mRow('Headcount',fmt(cnt))+mRow('Workforce Share',sh+'%')+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>'+action);
-}
-
-function desigPopup(name,v){
-  const avgAll=18500;
-  let b=[];
-  if(v.ctc<avgAll)b.push({t:'CTC '+rf(v.ctc)+' is '+Math.round((1-v.ctc/avgAll)*100)+'% below company avg - flight risk if market offers more',c:'bad'});
-  else b.push({t:'CTC '+rf(v.ctc)+' is '+Math.round((v.ctc/avgAll-1)*100)+'% above company avg',c:'good'});
-  if(v.n>5000)b.push({t:fmt(v.n)+' employees - this is the backbone role. Even 1% attrition = '+Math.round(v.n*0.01)+' replacements needed',c:'info'});
-  if(name==='Material Handler')b.push({t:'Lowest-paid, highest-volume role. Primary target for upskilling to Reach Truck/Fork Lift operators',c:'info'});
-  if(name==='Executive')b.push({t:'Senior role - retention critical. Any exit means 3-6 month replacement cycle',c:'info'});
-  openModal(name+' - Role Analysis',mRow('Headcount',fmt(v.n))+mRow('Avg CTC',rf(v.ctc))+'<div class="m-section"><h4>Analysis</h4>'+mBullets(b)+'</div>');
-}
-
-// === FILTERED DATA ===
 function getF(){
   const m=$('fM').value,r=$('fR').value,p=pM[m],rs=r==='all'?regs:[r];
-  let tA=0,tI=0,pA=0,pI=0,tC=0,tAt=0,tO=0,cc=0,pC=0,pAt=0,pO=0,pc=0;
-  const rows=[];
+  let tA=0,tI=0,pA=0,pI=0,tC=0,tAt=0,tO=0,cc=0,pC=0,pAt=0,pO=0,pc=0;const rows=[];
+  const months=curView==='mtd'?[m]:curView==='qtd'?['jan','feb','mar'].slice(0,['jan','feb','mar'].indexOf(m)+1):['jan','feb','mar'];
   rs.forEach(rg=>{
-    const h=D.headcount[rg]?.[m],ph=p?D.headcount[rg]?.[p]:null,c=D.comp[rg]?.[m],px=p?D.comp[rg]?.[p]:null;
-    if(!h)return;tA+=h.a;tI+=h.i;if(ph){pA+=ph.a;pI+=ph.i}
-    if(c){tC+=c.ctc*c.n;tAt+=c.att*c.n;tO+=c.ot*c.n;cc+=c.n}
+    let aSum=0,iSum=0,cSum=0,atSum=0,oSum=0,cN=0;
+    months.forEach(mo=>{const h=D.headcount[rg]?.[mo],c=D.comp[rg]?.[mo];if(h){aSum=h.a;iSum+=h.i}if(c){cSum+=c.ctc*c.n;atSum+=c.att*c.n;oSum+=c.ot*c.n;cN+=c.n}});
+    const ph=p?D.headcount[rg]?.[p]:null,px=p?D.comp[rg]?.[p]:null;
+    tA+=aSum;tI+=iSum;if(ph){pA+=ph.a;pI+=ph.i}
+    if(cN>0){tC+=cSum;tAt+=atSum;tO+=oSum;cc+=cN}
     if(px){pC+=px.ctc*px.n;pAt+=px.att*px.n;pO+=px.ot*px.n;pc+=px.n}
-    rows.push({name:rg,active:h.a,inactive:h.i,total:h.a+h.i,attrRate:pct(h.i,h.a+h.i),ctc:c?.ctc||0,attend:c?.att||0,otPct:c?.ot||0,count:c?.n||0,pActive:ph?.a,pInactive:ph?.i,pCtc:px?.ctc,pAttend:px?.att,pOtPct:px?.ot});
+    const latestH=D.headcount[rg]?.[m],latestC=D.comp[rg]?.[m];
+    rows.push({name:rg,active:latestH?.a||0,inactive:iSum,total:(latestH?.a||0)+iSum,attrRate:pct(iSum,(latestH?.a||0)+iSum),ctc:latestC?.ctc||0,attend:latestC?.att||0,otPct:latestC?.ot||0,count:latestC?.n||0,pActive:ph?.a,pInactive:ph?.i,pCtc:px?.ctc,pAttend:px?.att,pOtPct:px?.ot});
   });
   const aC=cc?Math.round(tC/cc):0,aA=cc?(tAt/cc).toFixed(1):0,aO=cc?(tO/cc).toFixed(1):0;
   const pAC=pc?Math.round(pC/pc):0,pAA=pc?(pAt/pc).toFixed(1):0,pAO=pc?(pO/pc).toFixed(1):0;
-  return{m,p,r,totalA:tA,totalI:tI,prevA:pA,prevI:pI,avgCTC:aC,avgAtt:aA,avgOT:aO,pAvgCTC:pAC,pAvgAtt:pAA,pAvgOT:pAO,g:D.gender[m],pg:p?D.gender[p]:null,ga:D.gAttr[m],regRows:rows,cCount:cc};
+  return{m,p,r,totalA:tA,totalI:tI,prevA:pA,prevI:pI,avgCTC:aC,avgAtt:aA,avgOT:aO,pAvgCTC:pAC,pAvgAtt:pAA,pAvgOT:pAO,g:D.gender[m],pg:p?D.gender[p]:null,ga:D.gAttr[m],regRows:rows,cCount:cc,months};
 }
 
 const pages=['ov','wf','geo','ca','comp','in','sr'],pN=['Overview','Workforce','Geography','Clients & Agencies','Compliance','Insights','Search'];
 $('tabBar').innerHTML=pages.map((p,i)=>'<button class="tab'+(i===0?' on':'')+'" onclick="go(\''+p+'\',this)">'+pN[i]+'</button>').join('');
 function go(id,btn){document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));$('pg-'+id).classList.add('on');btn.classList.add('on');setTimeout(()=>Object.values(ch).forEach(c=>c.resize?.()),30)}
-function R(){destroyAll();const F=getF();rOV(F);rWF(F);rGEO(F);rCA(F);rCOMP(F);rIN(F);rSR();setTimeout(()=>Object.values(ch).forEach(c=>c.resize?.()),50)}
+function R(){destroyAll();_popupData={};_popupId=0;const F=getF();rOV(F);rWF(F);rGEO(F);rCA(F);rCOMP(F);rIN(F);rSR();setTimeout(()=>Object.values(ch).forEach(c=>c.resize?.()),50)}
 function K(l,v,cls,sub,sc){return'<div class="k '+cls+'"><div class="k-l">'+l+'</div><div class="k-v">'+v+'</div><div class="k-s '+sc+'">'+sub+'</div></div>'}
 function chS(c,p,inv){if(p==null)return{t:'Baseline',c:'nt'};const d=(typeof c==='string'?parseFloat(c):c)-(typeof p==='string'?parseFloat(p):p);const pc=p!=0?((d/Math.abs(typeof p==='string'?parseFloat(p):p))*100).toFixed(1):0;return{t:(d>=0?'▲':'▼')+' '+Math.abs(pc)+'% vs prev',c:(inv?(d<=0):(d>=0))?'up':'dn'}}
 function pieClick(t,ls){return{onClick:(e,el)=>{if(!el.length)return;const v=ls[el[0].index];if(xF?.type===t&&xF.value===v)clearCross();else setCross(t,v)}}}
+const viewLabel=()=>curView==='mtd'?'MTD':curView==='qtd'?'QTD':'YTD';
+const GRD='#E8D5A0';
 
-// ========== OVERVIEW ==========
 function rOV(F){
   const{totalA,g}=F,femPct=pct(g.F,g.M+g.F);
   const aT=Object.values(D.age).reduce((s,v)=>s+v,0);
@@ -249,69 +283,78 @@ function rOV(F){
   const avgTen=Math.round(Object.entries(D.tenure).reduce((s,[k,v])=>s+({'<1yr':0.5,'1-2yr':1.5,'2-3yr':2.5,'3-5yr':4,'5-10yr':7.5,'10+yr':12}[k])*v,0)/tT);
   const u1Pct=Math.round(D.tenure['<1yr']/tT*100);
   const trend=['jan','feb','mar'].map(mo=>{let a=0,i=0;(F.r==='all'?regs:[F.r]).forEach(rg=>{const h=D.headcount[rg]?.[mo];if(h){a+=h.a;i+=h.i}});return{a,i}});
-
   $('pg-ov').innerHTML=
     K('Active Headcount',fmt(totalA),'kt',fmt(g.F)+' female ('+femPct+'%)','nt')+
     K('Female Ratio',femPct+'%','kr',fmt(g.F)+' of '+fmt(g.M+g.F),'nt')+
-    K('Avg Age',avgAge+' yr','kg',u25Pct+'% are under 25','nt')+
+    K('Avg Age',avgAge+' yr','kg',u25Pct+'% under 25','nt')+
     K('Avg Tenure',avgTen+' yr','ko',u1Pct+'% under 1 year','nt')+
     K('BGV Done','94%','kb',fmt(Math.round(totalA*.94))+' verified','nt')+
     K('Training','87%','kp',fmt(Math.round(totalA*.87))+' trained','nt')+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Headcount Trend - Q1</span></div><div class="cd-b"><canvas id="c1"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Headcount Trend — Q1</span><span class="cd-tag">'+viewLabel()+'</span></div><div class="cd-b"><canvas id="c1"></canvas></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">Gender Split</span></div><div class="cd-b"><canvas id="c2"></canvas></div></div>'+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Distribution</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK TO FILTER</span></div><div class="cd-b"><canvas id="c3"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Distribution</span><span class="cd-tag">CLICK TO FILTER</span></div><div class="cd-b"><canvas id="c3"></canvas></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">Activity Type</span></div><div class="cd-b"><canvas id="c4"></canvas></div></div>';
 
   ch.c1=new Chart($('c1'),{type:'bar',data:{labels:['Jan','Feb','Mar'],datasets:[
-    {label:'Active',data:trend.map(d=>d.a),backgroundColor:'#16A34A',yAxisID:'y'},
-    {label:'Inactive',data:trend.map(d=>d.i),backgroundColor:'#DC2626',yAxisID:'y1'}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'end',formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{type:'linear',position:'left',grid:{color:'#334155'},beginAtZero:false,title:{display:true,text:'Active',font:{size:8}}},y1:{type:'linear',position:'right',grid:{display:false},beginAtZero:true,title:{display:true,text:'Inactive',font:{size:8}}}}}});
+    {label:'Active',data:trend.map(d=>d.a),backgroundColor:'#FFCC00',yAxisID:'y'},
+    {label:'Inactive',data:trend.map(d=>d.i),backgroundColor:'#D40511',yAxisID:'y1'}
+  ]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{position:'top'},datalabels:{...dlAbove,formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{type:'linear',position:'left',grid:{color:GRD},beginAtZero:false,title:{display:true,text:'Active',font:{size:10}}},y1:{type:'linear',position:'right',grid:{display:false},beginAtZero:true,title:{display:true,text:'Inactive',font:{size:10}}}}}});
 
-  ch.c2=new Chart($('c2'),{type:'doughnut',data:{labels:['Male ('+fmt(g.M)+')','Female ('+fmt(g.F)+')'],datasets:[{data:[g.M,g.F],backgroundColor:['#2563EB','#E11D48'],borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:8}},datalabels:{display:true,color:'#fff',font:{size:14,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
+  // Gender — BOTH labels OUTSIDE with name
+  ch.c2=new Chart($('c2'),{type:'doughnut',data:{labels:['Male ('+fmt(g.M)+')','Female ('+fmt(g.F)+')'],datasets:[{data:[g.M,g.F],backgroundColor:['#888','#D40511'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:11,family:'Inter'},padding:10}},datalabels:{display:true,color:'#1A1A1A',font:{size:13,weight:'800',family:'Inter'},anchor:'end',align:'end',offset:12,formatter:(v,ctx)=>{const t=ctx.dataset.data.reduce((a,b)=>a+b,0);const p=Math.round(v/t*100);return p+'%'}}}}});
 
-  const sE=Object.entries(D.sector).sort((a,b)=>b[1]-a[1]),sL=sE.map(e=>e[0]),sD=sE.map(e=>e[1]);
+  // Sector — labels WHITE
+  const sE=Object.entries(D.sector).sort((a,b)=>b[1].n-a[1].n),sL=sE.map(e=>e[0]),sD=sE.map(e=>e[1].n);
   const hl=xF?.type==='sector'?sL.indexOf(xF.value):-1;
-  ch.c3=new Chart($('c3'),{type:'doughnut',data:{labels:sL,datasets:[{data:sD,backgroundColor:sL.map((l,i)=>hl>=0&&i!==hl?'#334155':C[i%C.length]),borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'38%',plugins:{legend:{position:'right',labels:{font:{size:9},padding:4,boxWidth:10}},datalabels:{display:true,color:'#fff',font:{size:8,weight:'800'},formatter:(v,ctx)=>{const p=Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100);return p>5?p+'%':''}}},...pieClick('sector',sL)}});
+  ch.c3=new Chart($('c3'),{type:'doughnut',data:{labels:sL,datasets:[{data:sD,backgroundColor:sL.map((l,i)=>hl>=0&&i!==hl?'#D4B96E':C[i%C.length]),borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'38%',plugins:{legend:{position:'right',labels:{font:{size:10},padding:5,boxWidth:10,color:'#3A3A3A'}},datalabels:{display:true,color:'#FFFFFF',font:{size:11,weight:'800',family:'Inter'},textStrokeColor:'rgba(0,0,0,.6)',textStrokeWidth:3,formatter:(v,ctx)=>{const p=Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100);return p>4?p+'%':''}}},...pieClick('sector',sL)}});
 
   const aE=Object.entries(D.activity).sort((a,b)=>b[1]-a[1]);
-  ch.c4=new Chart($('c4'),{type:'bar',data:{labels:aE.map(e=>e[0]),datasets:[{data:aE.map(e=>e[1]),backgroundColor:'#D40511'}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{left:10}},plugins:{legend:{display:false},datalabels:{display:true,color:'#E2E8F0',font:{size:9,weight:'700'},anchor:'end',align:'right',formatter:v=>fmt(v)}},scales:{x:{grid:{color:'#334155'}},y:{grid:{display:false},ticks:{font:{size:9},color:'#CBD5E1'}}}}});
+  ch.c4=new Chart($('c4'),{type:'bar',data:{labels:aE.map(e=>e[0]),datasets:[{data:aE.map(e=>e[1]),backgroundColor:'#D40511'}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{right:50}},plugins:{legend:{display:false},datalabels:{display:true,color:'#1A1A1A',font:{size:10,weight:'700'},anchor:'end',align:'right',offset:4,formatter:v=>fmt(v)}},scales:{x:{grid:{color:GRD}},y:{grid:{display:false},ticks:{font:{size:10},color:'#3A3A3A'}}}}});
 }
 
-// ========== WORKFORCE ==========
 function rWF(F){
   const{m,p,totalA,totalI,g,ga,regRows}=F,total=totalA+totalI,aR=pct(totalI,total),fP=pct(g.F,g.M+g.F);
   const hot=regRows.filter(r=>r.inactive>0).sort((a,b)=>b.inactive-a.inactive)[0];
+  const pTotalI=p?regs.reduce((s,rg)=>s+(D.headcount[rg]?.[p]?.i||0),0):null;
+  const pTotal=p?regs.reduce((s,rg)=>{const h=D.headcount[rg]?.[p];return s+(h?h.a+h.i:0)},0):null;
+  const pAR=pTotal?pct(pTotalI,pTotal):null;
   $('pg-wf').innerHTML=
     K('Total HC',fmt(total),'kt','Active '+fmt(totalA)+' | Inactive '+fmt(totalI),'nt')+
-    K('Attrition',aR+'%','kr',totalI+' exits','dn')+
+    K('Attrition Rate',aR+'%','kr',(pAR?'Prev: '+pAR+'% ':'')+totalI+' exits','dn')+
     K('Female',fP+'%','kp',fmt(g.F)+' employees','nt')+
     K('Male Exits',fmt(ga.M),'kb',p?'Prev: '+D.gAttr[p].M:'','nt')+
     K('Female Exits',fmt(ga.F),'ko',p?'Prev: '+D.gAttr[p].F:'','nt')+
-    K('Hotspot',hot?hot.name:'-','kr',hot?hot.inactive+' exits':'','dn')+
+    K('Hotspot',hot?hot.name:'-','kr',hot?hot.inactive+' exits ('+hot.attrRate+'%)':'','dn')+
     '<div class="cd c2"><div class="cd-h"><span class="cd-t">Age Distribution</span></div><div class="cd-b"><canvas id="w1"></canvas></div></div>'+
     '<div class="cd c2"><div class="cd-h"><span class="cd-t">Tenure Distribution</span></div><div class="cd-b"><canvas id="w2"></canvas></div></div>'+
-    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Gender Trend - Q1</span></div><div class="cd-b"><canvas id="w3"></canvas></div></div>'+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Attrition by Region - Q1</span></div><div class="cd-b"><canvas id="w4"></canvas></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Gender Trend — Q1</span></div><div class="cd-b"><canvas id="w3"></canvas></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Attrition by Region — Q1 (% Rate)</span></div><div class="cd-b"><canvas id="w4"></canvas></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">Exit by Tenure</span></div><div class="cd-b"><canvas id="w5"></canvas></div></div>';
 
-  ch.w1=new Chart($('w1'),{type:'bar',data:{labels:Object.keys(D.age),datasets:[{data:Object.values(D.age),backgroundColor:C.slice(0,7)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false}},y:{grid:{color:'#334155'}}}}});
-  ch.w2=new Chart($('w2'),{type:'bar',data:{labels:Object.keys(D.tenure),datasets:[{data:Object.values(D.tenure),backgroundColor:C.slice(0,6)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false}},y:{grid:{color:'#334155'}}}}});
+  ch.w1=new Chart($('w1'),{type:'bar',data:{labels:Object.keys(D.age),datasets:[{data:Object.values(D.age),backgroundColor:C.slice(0,7)}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{display:false},datalabels:dlAbove},scales:{x:{grid:{display:false}},y:{grid:{color:GRD}}}}});
+  ch.w2=new Chart($('w2'),{type:'bar',data:{labels:Object.keys(D.tenure),datasets:[{data:Object.values(D.tenure),backgroundColor:C.slice(0,6)}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{display:false},datalabels:dlAbove},scales:{x:{grid:{display:false}},y:{grid:{color:GRD}}}}});
   const gT=['jan','feb','mar'].map(mo=>D.gender[mo]);
-  ch.w3=new Chart($('w3'),{type:'bar',data:{labels:['Jan','Feb','Mar'],datasets:[{label:'Male',data:gT.map(g=>g.M),backgroundColor:'#2563EB'},{label:'Female',data:gT.map(g=>g.F),backgroundColor:'#E11D48'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{grid:{color:'#334155'},beginAtZero:false}}}});
+  ch.w3=new Chart($('w3'),{type:'bar',data:{labels:['Jan','Feb','Mar'],datasets:[{label:'Male',data:gT.map(g=>g.M),backgroundColor:'#888'},{label:'Female',data:gT.map(g=>g.F),backgroundColor:'#D40511'}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{position:'top'},datalabels:{...dlAbove,formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{grid:{color:GRD},beginAtZero:false}}}});
+
   const wRegs=F.r==='all'?mR:[F.r].filter(r=>mR.includes(r));
-  ch.w4=new Chart($('w4'),{type:'bar',data:{labels:wRegs.length?wRegs:mR,datasets:[{label:'Jan',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.jan?.i||0),backgroundColor:'#2563EB'},{label:'Feb',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.feb?.i||0),backgroundColor:'#EA580C'},{label:'Mar',data:(wRegs.length?wRegs:mR).map(r=>D.headcount[r]?.mar?.i||0),backgroundColor:'#DC2626'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'}}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'}}}}});
-  ch.w5=new Chart($('w5'),{type:'doughnut',data:{labels:Object.keys(D.attrTen),datasets:[{data:Object.values(D.attrTen),backgroundColor:['#DC2626','#EA580C','#CA8A04','#16A34A','#2563EB'],borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:9}}},datalabels:{display:true,color:'#fff',font:{size:11,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
+  const attrRate=(rg,mo)=>{const h=D.headcount[rg]?.[mo];return h?parseFloat(pct(h.i,h.a+h.i)):0};
+  ch.w4=new Chart($('w4'),{type:'bar',data:{labels:wRegs.length?wRegs:mR,datasets:[
+    {label:'Jan',data:(wRegs.length?wRegs:mR).map(r=>attrRate(r,'jan')),backgroundColor:'#FFCC00'},
+    {label:'Feb',data:(wRegs.length?wRegs:mR).map(r=>attrRate(r,'feb')),backgroundColor:'#888'},
+    {label:'Mar',data:(wRegs.length?wRegs:mR).map(r=>attrRate(r,'mar')),backgroundColor:'#D40511'}
+  ]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{position:'top'},datalabels:{...dlAboveSmall,formatter:v=>v>0?v.toFixed(1)+'%':''}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:GRD},ticks:{callback:v=>v+'%'}}}}});
+
+  ch.w5=new Chart($('w5'),{type:'doughnut',data:{labels:Object.keys(D.attrTen),datasets:[{data:Object.values(D.attrTen),backgroundColor:['#D40511','#E65100','#CC9900','#2E7D32','#1565C0'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:11,family:'Inter'}}},datalabels:{display:true,color:'#fff',font:{size:13,weight:'800',family:'Inter'},textStrokeColor:'rgba(0,0,0,.5)',textStrokeWidth:2,formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
 }
 
-// ========== GEOGRAPHY ==========
 function rGEO(F){
   const{totalA,totalI,regRows,avgCTC,pAvgCTC}=F;
   const s=[...regRows].filter(r=>r.active>0).sort((a,b)=>b.active-a.active);
-  const regTbl=s.map(r=>'<tr onclick=\'regionPopup('+JSON.stringify(r).replace(/'/g,"\\'")+')\'><td>'+r.name+'</td><td class="num">'+fmt(r.active)+'</td><td class="num">'+fmt(r.inactive)+'</td><td class="num '+(parseFloat(r.attrRate)>1.5?'hi':'')+'">'+r.attrRate+'%</td><td class="num">'+rf(r.ctc)+'</td><td class="num">'+r.attend.toFixed(1)+'</td><td class="num '+(r.otPct>10?'hi':'')+'">'+r.otPct.toFixed(1)+'%</td></tr>').join('');
-  const stTbl=Object.entries(D.stAttr).sort((a,b)=>b[1]-a[1]).map(([s,n])=>'<tr><td>'+s+'</td><td class="num '+(n>50?'hi':'')+'">'+n+'</td><td class="num">'+pct(n,totalI)+'%</td></tr>').join('');
-  const whTbl=Object.entries(D.wh).slice(0,12).map(([w,n])=>'<tr onclick="whPopup(\''+w.replace(/'/g,"\\'")+'\','+n+','+totalA+')"><td>'+w+'</td><td class="num">'+fmt(n)+'</td></tr>').join('');
+  const regTbl=s.map(r=>{const id=storePopup(r);return'<tr onclick="regionPopup(\''+id+'\')"><td>'+r.name+'</td><td class="num">'+fmt(r.active)+'</td><td class="num">'+fmt(r.inactive)+'</td><td class="num '+(parseFloat(r.attrRate)>1.5?'hi':'')+'">'+r.attrRate+'%</td><td class="num">'+rf(r.ctc)+'</td><td class="num">'+r.attend.toFixed(1)+'</td><td class="num '+(r.otPct>10?'hi':'')+'">'+r.otPct.toFixed(1)+'%</td></tr>'}).join('');
+  const allStates=[...new Set([...Object.keys(D.stAttr.jan||{}),...Object.keys(D.stAttr.feb||{}),...Object.keys(D.stAttr.mar||{})])];
+  const stTbl=allStates.sort((a,b)=>(D.stAttr.mar[b]||0)-(D.stAttr.mar[a]||0)).map(st=>{const j=D.stAttr.jan[st]||0,f=D.stAttr.feb[st]||0,m=D.stAttr.mar[st]||0;return'<tr><td>'+st+'</td><td class="num">'+j+'</td><td class="num">'+f+'</td><td class="num '+(m>50?'hi':'')+'">'+m+'</td><td class="num">'+(j+f+m)+'</td><td class="num">'+trendArrow(m,f)+'</td></tr>'}).join('');
+  const whTbl=Object.entries(D.wh).slice(0,12).map(([w,n])=>{const id=storePopup({_name:w,cnt:n,tA:totalA});return'<tr onclick="whPopup(\''+id+'\')"><td>'+w+'</td><td class="num">'+fmt(n)+'</td></tr>'}).join('');
   const hAttr=regRows.filter(r=>r.inactive>0).sort((a,b)=>parseFloat(b.attrRate)-parseFloat(a.attrRate))[0];
-
   $('pg-geo').innerHTML=
     K('Avg CTC',rf(avgCTC),'kt',F.p?'Prev: '+rf(pAvgCTC):'','nt')+
     K('Avg Attendance',F.avgAtt+'d','kg',F.p?'Prev: '+F.pAvgAtt+'d':'','nt')+
@@ -319,117 +362,94 @@ function rGEO(F){
     K('Top Region',s[0]?.name||'-','kb',fmt(s[0]?.active)+' active','nt')+
     K('High Attrition',hAttr?.name||'-','kr',(hAttr?.attrRate||0)+'%','dn')+
     K('Zones','4','kp','Active zones','nt')+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Performance</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th>Active</th><th>Inact</th><th>Attr%</th><th>CTC</th><th>Attend</th><th>OT%</th></tr></thead><tbody>'+regTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Performance</span><span class="cd-tag">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th class="num">Active</th><th class="num">Inact</th><th class="num">Attr%</th><th class="num">CTC</th><th class="num">Attend</th><th class="num">OT%</th></tr></thead><tbody>'+regTbl+'</tbody></table></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Headcount</span></div><div class="cd-b"><canvas id="g1"></canvas></div></div>'+
-    '<div class="cd c2"><div class="cd-h"><span class="cd-t">State Attrition</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>State</th><th>Exits</th><th>Share</th></tr></thead><tbody>'+stTbl+'</tbody></table></div></div>'+
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">State Attrition — Q1 Trend</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>State</th><th class="num">Jan</th><th class="num">Feb</th><th class="num">Mar</th><th class="num">Q1</th><th class="num">Trend</th></tr></thead><tbody>'+stTbl+'</tbody></table></div></div>'+
     '<div class="cd c2"><div class="cd-h"><span class="cd-t">Zone Distribution</span></div><div class="cd-b"><canvas id="g2"></canvas></div></div>'+
-    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Top Warehouses</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Warehouse</th><th>HC</th></tr></thead><tbody>'+whTbl+'</tbody></table></div></div>';
+    '<div class="cd c2"><div class="cd-h"><span class="cd-t">Top Warehouses</span><span class="cd-tag">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Warehouse</th><th class="num">HC</th></tr></thead><tbody>'+whTbl+'</tbody></table></div></div>';
 
   const rl=F.r==='all'?s.filter(r=>r.name!=='Corporate'&&r.name!=='Other Offices'):s;
-  ch.g1=new Chart($('g1'),{type:'bar',data:{labels:rl.map(r=>r.name),datasets:[{data:rl.map(r=>r.active),backgroundColor:rl.map((r,i)=>C[i%C.length])}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:dlInside},scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:'#334155'}}}}});
+  ch.g1=new Chart($('g1'),{type:'bar',data:{labels:rl.map(r=>r.name),datasets:[{data:rl.map(r=>r.active),backgroundColor:rl.map((r,i)=>C[i%C.length])}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{display:false},datalabels:dlAbove},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:GRD}}}}});
   const zE=Object.entries(D.zones).sort((a,b)=>b[1]-a[1]);
-  ch.g2=new Chart($('g2'),{type:'doughnut',data:{labels:zE.map(e=>e[0]),datasets:[{data:zE.map(e=>e[1]),backgroundColor:['#DC2626','#2563EB','#16A34A','#EA580C'],borderWidth:2,borderColor:'#1E293B'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:10}}},datalabels:{display:true,color:'#fff',font:{size:11,weight:'800'},formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
+  ch.g2=new Chart($('g2'),{type:'doughnut',data:{labels:zE.map(e=>e[0]),datasets:[{data:zE.map(e=>e[1]),backgroundColor:['#D40511','#FFCC00','#888','#E65100'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:11,family:'Inter'}}},datalabels:{display:true,color:'#fff',font:{size:13,weight:'800',family:'Inter'},textStrokeColor:'rgba(0,0,0,.5)',textStrokeWidth:2,formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
 }
 
-// ========== CLIENTS & AGENCIES ==========
 function rCA(F){
   const{totalA}=F;
-  const sE=Object.entries(D.sector).sort((a,b)=>b[1]-a[1]),aE=Object.entries(D.ag).sort((a,b)=>b[1].n-a[1].n),dE=Object.entries(D.desig).sort((a,b)=>b[1].n-a[1].n);
-  const secTbl=sE.map(([s,n])=>'<tr '+(xF?.type==='sector'&&xF.value===s?'style="background:rgba(212,5,17,.15)"':'')+' onclick="setCross(\'sector\',\''+s+'\')"><td>'+s+'</td><td class="num">'+fmt(n)+'</td><td class="num">'+pct(n,totalA)+'%</td></tr>').join('');
-  const agTbl=aE.map(([a,v])=>'<tr onclick="agencyPopup(\''+a.replace(/'/g,"\\'")+'\','+JSON.stringify(v)+')"><td>'+a+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+rf(v.ctc)+'</td><td class="num">'+v.att+'</td><td class="num '+(v.ot>10?'hi':'')+'">'+v.ot+'%</td></tr>').join('');
-  const desTbl=dE.map(([d,v])=>'<tr onclick="desigPopup(\''+d.replace(/'/g,"\\'")+'\','+JSON.stringify(v)+')" style="cursor:pointer"><td>'+d+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+rf(v.ctc)+'</td></tr>').join('');
-
+  const sE=Object.entries(D.sector).sort((a,b)=>b[1].n-a[1].n),aE=Object.entries(D.ag).sort((a,b)=>b[1].n-a[1].n),dE=Object.entries(D.desig).sort((a,b)=>b[1].n-a[1].n);
+  const secTbl=sE.map(([s,v])=>'<tr '+(xF?.type==='sector'&&xF.value===s?'style="background:rgba(255,204,0,.15)"':'')+' onclick="setCross(\'sector\',\''+s.replace(/'/g,"\\'")+'\')"><td>'+s+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+pct(v.n,totalA)+'%</td><td class="num">'+rf(v.ctc)+'</td></tr>').join('');
+  const agTbl=aE.map(([a,v])=>{const id=storePopup({...v,_name:a});return'<tr onclick="agencyPopup(\''+id+'\')"><td>'+a+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+rf(v.ctc)+'</td><td class="num">'+v.att+'</td><td class="num '+(v.ot>10?'hi':'')+'">'+v.ot+'%</td></tr>'}).join('');
+  const desTbl=dE.map(([d,v])=>{const id=storePopup({...v,_name:d});return'<tr onclick="desigPopup(\''+id+'\')"><td>'+d+'</td><td class="num">'+fmt(v.n)+'</td><td class="num">'+rf(v.ctc)+'</td></tr>'}).join('');
   const topAg=aE[0],topSec=sE[0],topWh=Object.entries(D.wh).sort((a,b)=>b[1]-a[1])[0];
   const minCTC=Math.min(...aE.map(e=>e[1].ctc)),maxCTC=Math.max(...aE.map(e=>e[1].ctc));
   $('pg-ca').innerHTML=
     K('Agencies',Object.keys(D.ag).length,'kt','Staffing partners','nt')+
     K('Largest',topAg[0],'kr',fmt(topAg[1].n)+' employees','nt')+
     K('Sectors',Object.keys(D.sector).length,'kg','Client sectors','nt')+
-    K('Top Sector',topSec[0],'ko',fmt(topSec[1])+' employees','nt')+
+    K('Top Sector',topSec[0],'ko',fmt(topSec[1].n)+' employees','nt')+
     K('Top Site',topWh[0],'kb',fmt(topWh[1])+' employees','nt')+
-    K('CTC Range','₹'+Math.round(minCTC/1000)+'K-₹'+Math.round(maxCTC/1000)+'K','kp',(maxCTC/minCTC).toFixed(1)+'x agency gap','nt')+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Agency Performance</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW FOR SCORECARD</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Agency</th><th>HC</th><th>CTC</th><th>Attend</th><th>OT%</th></tr></thead><tbody>'+agTbl+'</tbody></table></div></div>'+
+    K('CTC Range','₹'+Math.round(minCTC/1000)+'K-₹'+Math.round(maxCTC/1000)+'K','kp',(maxCTC/minCTC).toFixed(1)+'x gap','nt')+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Agency Performance</span><span class="cd-tag">CLICK ROW FOR SCORECARD</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Agency</th><th class="num">HC</th><th class="num">CTC</th><th class="num">Attend</th><th class="num">OT%</th></tr></thead><tbody>'+agTbl+'</tbody></table></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">Agency CTC Comparison</span></div><div class="cd-b"><canvas id="ca1"></canvas></div></div>'+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Breakdown</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Sector</th><th>HC</th><th>Share</th></tr></thead><tbody>'+secTbl+'</tbody></table></div></div>'+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Designation Breakdown</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Designation</th><th>Count</th><th>CTC</th></tr></thead><tbody>'+desTbl+'</tbody></table></div></div>';
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Sector Breakdown</span><span class="cd-tag">CLICK</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Sector</th><th class="num">HC</th><th class="num">Share</th><th class="num">Avg CTC</th></tr></thead><tbody>'+secTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Designation Breakdown</span><span class="cd-tag">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Designation</th><th class="num">Count</th><th class="num">CTC</th></tr></thead><tbody>'+desTbl+'</tbody></table></div></div>';
 
   const t10=aE.slice(0,10);
-  ch.ca1=new Chart($('ca1'),{type:'bar',data:{labels:t10.map(e=>e[0]),datasets:[{data:t10.map(e=>e[1].ctc),backgroundColor:t10.map(e=>e[1].ctc>25000?'#DC2626':e[1].ctc<17000?'#EA580C':'#2563EB')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},datalabels:{display:true,color:'#E2E8F0',font:{size:8,weight:'700'},anchor:'end',align:'right',formatter:v=>rf(v)}},scales:{x:{grid:{color:'#334155'},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:8}}},y:{grid:{display:false},ticks:{font:{size:8}}}}}});
+  ch.ca1=new Chart($('ca1'),{type:'bar',data:{labels:t10.map(e=>e[0]),datasets:[{data:t10.map(e=>e[1].ctc),backgroundColor:t10.map(e=>e[1].ctc>25000?'#D40511':e[1].ctc<17000?'#E65100':'#FFCC00')}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,layout:{padding:{right:60}},plugins:{legend:{display:false},datalabels:{display:true,color:'#1A1A1A',font:{size:10,weight:'700'},anchor:'end',align:'right',offset:4,formatter:v=>rf(v)}},scales:{x:{grid:{color:GRD},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:10}}},y:{grid:{display:false},ticks:{font:{size:10}}}}}});
 }
 
-// ========== COMPLIANCE ==========
 function rCOMP(F){
   const{m,p,avgCTC,pAvgCTC,regRows}=F;
   const cC=chS(avgCTC,p?pAvgCTC:null),aC=chS(parseFloat(F.avgAtt),p?parseFloat(F.pAvgAtt):null),oC=chS(parseFloat(F.avgOT),p?parseFloat(F.pAvgOT):null,true);
   const oH=[...regRows].sort((a,b)=>b.otPct-a.otPct)[0];
-  const attTbl=regRows.filter(r=>r.count>0).sort((a,b)=>b.attend-a.attend).map(r=>'<tr onclick=\'regionPopup('+JSON.stringify(r).replace(/'/g,"\\'")+')\'><td>'+r.name+'</td><td class="num">'+fmt(r.count)+'</td><td class="num '+(r.attend<23?'hi':'')+'">'+r.attend.toFixed(1)+'</td><td class="num">'+(r.pAttend!=null?r.pAttend.toFixed(1):'-')+'</td><td class="num '+(r.otPct>10?'hi':'')+'">'+r.otPct.toFixed(1)+'%</td><td class="num">'+(r.pOtPct!=null?r.pOtPct.toFixed(1)+'%':'-')+'</td></tr>').join('');
-
+  const attTbl=regRows.filter(r=>r.count>0).sort((a,b)=>b.attend-a.attend).map(r=>{const id=storePopup(r);return'<tr onclick="regionPopup(\''+id+'\')"><td>'+r.name+'</td><td class="num">'+fmt(r.count)+'</td><td class="num '+(r.attend<23?'hi':'')+'">'+r.attend.toFixed(1)+'</td><td class="num">'+(r.pAttend!=null?r.pAttend.toFixed(1):'-')+'</td><td class="num '+(r.otPct>10?'hi':'')+'">'+r.otPct.toFixed(1)+'%</td><td class="num">'+(r.pOtPct!=null?r.pOtPct.toFixed(1)+'%':'-')+'</td></tr>'}).join('');
   $('pg-comp').innerHTML=
-    K('Avg CTC',rf(avgCTC),'kt',cC.t,cC.c)+
-    K('Avg Attendance',F.avgAtt+'d','kg',aC.t,aC.c)+
-    K('Avg OT',F.avgOT+'%','ko',oC.t,oC.c)+
-    K('OT Hotspot',oH?oH.name:'-','kr',oH?oH.otPct.toFixed(1)+'%':'','dn')+
-    K('Wage Records',fmt(F.cCount),'kb','Current month','nt')+
-    K('BGV','94%','kp','Verified','nt')+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Attendance & OT</span><span class="cd-tag" style="background:rgba(220,38,38,.15);color:#FCA5A5">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th>HC</th><th>Attend</th><th>Prev</th><th>OT%</th><th>Prev OT</th></tr></thead><tbody>'+attTbl+'</tbody></table></div></div>'+
-    '<div class="cd c3"><div class="cd-h"><span class="cd-t">OT% by Region - Q1</span></div><div class="cd-b"><canvas id="co1"></canvas></div></div>'+
+    K('Avg CTC',rf(avgCTC),'kt',cC.t,cC.c)+K('Avg Attendance',F.avgAtt+'d','kg',aC.t,aC.c)+K('Avg OT',F.avgOT+'%','ko',oC.t,oC.c)+
+    K('OT Hotspot',oH?oH.name:'-','kr',oH?oH.otPct.toFixed(1)+'%':'','dn')+K('Wage Records',fmt(F.cCount),'kb','Current month','nt')+K('BGV','94%','kp','Verified','nt')+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">Region Attendance & OT</span><span class="cd-tag">CLICK ROW</span></div><div class="tbl-wrap"><table class="dt"><thead><tr><th>Region</th><th class="num">HC</th><th class="num">Attend</th><th class="num">Prev</th><th class="num">OT%</th><th class="num">Prev OT</th></tr></thead><tbody>'+attTbl+'</tbody></table></div></div>'+
+    '<div class="cd c3"><div class="cd-h"><span class="cd-t">OT% by Region — Q1</span></div><div class="cd-b"><canvas id="co1"></canvas></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">CTC by Region</span></div><div class="cd-b"><canvas id="co2"></canvas></div></div>'+
     '<div class="cd c3"><div class="cd-h"><span class="cd-t">Attendance Trend</span></div><div class="cd-b"><canvas id="co3"></canvas></div></div>';
-
   const cRegs=F.r==='all'?mR:[F.r].filter(r=>mR.includes(r));
-  ch.co1=new Chart($('co1'),{type:'bar',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.ot||0),backgroundColor:'#2563EB'},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.ot||0),backgroundColor:'#EA580C'},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.ot||0),backgroundColor:'#DC2626'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'},formatter:v=>v.toFixed(1)+'%'}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'}}}}});
-
+  ch.co1=new Chart($('co1'),{type:'bar',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.ot||0),backgroundColor:'#FFCC00'},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.ot||0),backgroundColor:'#888'},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.ot||0),backgroundColor:'#D40511'}]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:22}},plugins:{legend:{position:'top'},datalabels:{...dlAboveSmall,formatter:v=>v.toFixed(1)+'%'}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:GRD}}}}});
   const cR=F.regRows.filter(r=>r.ctc>0).sort((a,b)=>b.ctc-a.ctc);
   const ds=[{label:mn[m],data:cR.map(r=>r.ctc),backgroundColor:'#D40511'}];
-  if(F.p)ds.push({label:mn[F.p],data:cR.map(r=>r.pCtc||0),backgroundColor:'#2563EB'});
-  ch.co2=new Chart($('co2'),{type:'bar',data:{labels:cR.map(r=>r.name),datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{...dlInside,font:{size:7,weight:'700'},formatter:v=>v?'₹'+Math.round(v/1000)+'K':''}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:8}}}}}});
-
-  ch.co3=new Chart($('co3'),{type:'line',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.att||0),borderColor:'#2563EB',backgroundColor:'#2563EB',tension:.3,pointRadius:4,borderWidth:2.5},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.att||0),borderColor:'#EA580C',backgroundColor:'#EA580C',tension:.3,pointRadius:4,borderWidth:2.5},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.att||0),borderColor:'#16A34A',backgroundColor:'#16A34A',tension:.3,pointRadius:4,borderWidth:2.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:8}}},y:{grid:{color:'#334155'}}}}});
+  if(F.p)ds.push({label:mn[F.p],data:cR.map(r=>r.pCtc||0),backgroundColor:'#FFCC00'});
+  ch.co2=new Chart($('co2'),{type:'bar',data:{labels:cR.map(r=>r.name),datasets:ds},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:22}},plugins:{legend:{position:'top'},datalabels:{...dlAboveSmall,formatter:v=>v?'₹'+Math.round(v/1000)+'K':''}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:GRD},ticks:{callback:v=>'₹'+Math.round(v/1000)+'K',font:{size:10}}}}}});
+  ch.co3=new Chart($('co3'),{type:'line',data:{labels:cRegs,datasets:[{label:'Jan',data:cRegs.map(r=>D.comp[r]?.jan?.att||0),borderColor:'#FFCC00',backgroundColor:'#FFCC00',tension:.3,pointRadius:5,borderWidth:2.5},{label:'Feb',data:cRegs.map(r=>D.comp[r]?.feb?.att||0),borderColor:'#888',backgroundColor:'#888',tension:.3,pointRadius:5,borderWidth:2.5},{label:'Mar',data:cRegs.map(r=>D.comp[r]?.mar?.att||0),borderColor:'#D40511',backgroundColor:'#D40511',tension:.3,pointRadius:5,borderWidth:2.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},datalabels:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:GRD}}}}});
 }
 
-// ========== INSIGHTS (DYNAMIC) ==========
 function rIN(F){
-  const{m,totalA,totalI,regRows,avgCTC,avgAtt,avgOT,g}=F;
-  const total=totalA+totalI,aR=pct(totalI,total);
+  const{m,totalA,totalI,regRows,avgCTC,avgAtt,avgOT,g}=F,total=totalA+totalI,aR=pct(totalI,total);
   const hot=regRows.filter(r=>r.inactive>0).sort((a,b)=>b.inactive-a.inactive)[0];
   const otHot=[...regRows].sort((a,b)=>b.otPct-a.otPct)[0];
-  const fP=pct(g.F,g.M+g.F);
-  const mName={jan:'January',feb:'February',mar:'March'}[m];
-  const rName=F.r==='all'?'All Regions':F.r;
-
+  const fP=pct(g.F,g.M+g.F),mName={jan:'January',feb:'February',mar:'March'}[m],rName=F.r==='all'?'All Regions':F.r;
   let cards=[];
-  cards.push('<div class="ins" style="border-left-color:var(--tl)"><div class="ins-t">Current View: '+mName+' | '+rName+'</div><div class="ins-p"><b>'+fmt(totalA)+'</b> active employees, <b>'+fmt(totalI)+'</b> exits ('+aR+'% attrition). Avg CTC <b>'+rf(avgCTC)+'</b>, Attendance <b>'+F.avgAtt+'d</b>, OT <b>'+F.avgOT+'%</b>. Female ratio <b>'+fP+'%</b>.</div></div>');
-
-  if(hot&&hot.inactive>5)cards.push('<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">Attrition Alert: '+hot.name+'</div><div class="ins-p"><b>'+hot.inactive+' exits</b> ('+hot.attrRate+'% rate) - highest in current view. '+(parseFloat(hot.attrRate)>1.5?'This exceeds the 1.5% threshold. Immediate exit interviews needed.':'Within acceptable range but monitor closely.')+' '+(hot.ctc<18000?'Low CTC ('+rf(hot.ctc)+') may be contributing.':'')+'</div></div>');
-
-  if(otHot&&otHot.otPct>6)cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">OT Warning: '+otHot.name+' at '+otHot.otPct.toFixed(1)+'%</div><div class="ins-p">'+(otHot.otPct>10?'<b>CRITICAL</b> - 3x healthy threshold. Workers are overloaded. Hire additional staff within 2 weeks or risk burnout and quality issues.':'<b>Elevated</b> - above 5% target. Review shift planning and consider adding 10-15% buffer staffing.')+'</div></div>');
-
+  cards.push('<div class="ins" style="border-left-color:var(--yel)"><div class="ins-t">'+viewLabel()+': '+mName+' | '+rName+'</div><div class="ins-p"><b>'+fmt(totalA)+'</b> active, <b>'+fmt(totalI)+'</b> exits ('+aR+'%). CTC <b>'+rf(avgCTC)+'</b>, Attend <b>'+F.avgAtt+'d</b>, OT <b>'+F.avgOT+'%</b>. Female <b>'+fP+'%</b>.</div></div>');
+  if(hot&&hot.inactive>5)cards.push('<div class="ins"><div class="ins-t">Attrition Alert: '+hot.name+'</div><div class="ins-p"><b>'+hot.inactive+' exits</b> ('+hot.attrRate+'%). '+(parseFloat(hot.attrRate)>1.5?'Exceeds 1.5% threshold.':'Monitor.')+' '+(hot.ctc<18000?'Low CTC '+rf(hot.ctc)+'.':'')+'</div></div>');
+  if(otHot&&otHot.otPct>6)cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">OT Warning: '+otHot.name+' '+otHot.otPct.toFixed(1)+'%</div><div class="ins-p">'+(otHot.otPct>10?'<b>CRITICAL</b> — 3x threshold.':'<b>Elevated</b> — above 5%.')+'</div></div>');
   if(F.r==='all'){
-    cards.push('<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">South1 Attrition Crisis</div><div class="ins-p">South1 = <b>42-67% of all exits</b> every month. Karnataka: 88 exits in March. CTC ₹16,753 is lowest among major regions - compensation is the primary attrition driver. <b>Action:</b> Benchmark CTC against local market, implement retention bonus.</div></div>');
-    cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">63% Workforce Has &lt;1yr Tenure</div><div class="ins-p"><b>10,654 of 16,947</b> employees joined within the last year. 48.6% of exits also happen in year 1. This signals onboarding failure. <b>Action:</b> Launch 30-60-90 day check-in program with buddy system at top 10 sites.</div></div>');
-    cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">West 2 OT Surged 9.8% to 16.8%</div><div class="ins-p">Q1 OT escalation is <b>3x the 5% healthy threshold</b>. Avadhoot agency OT at 11.3%. If unchecked, expect increased attrition and safety incidents. <b>Action:</b> Emergency staffing audit, cap OT at 10% within 30 days.</div></div>');
-    cards.push('<div class="ins" style="border-left-color:var(--g)"><div class="ins-t">Female Growth: 18.4% to 20.5%</div><div class="ins-p">Female share rose by <b>+2.1pp</b> (3,120 to 3,429) while total HC declined. Strong diversity progress driven by South1 and West 1 hiring. <b>Target:</b> 25% by FY26-end - need ~750 more female hires.</div></div>');
-    cards.push('<div class="ins" style="border-left-color:var(--b)"><div class="ins-t">Agency Cost Gap: 2.1x</div><div class="ins-p">Dedha India HR charges <b>₹32,298</b> vs Needs Manpower at <b>₹15,606</b>. But Dedha delivers 29.4d attendance vs Needs at 22.8d. Cost per productive day: Dedha ₹1,099 vs Needs ₹685. <b>Action:</b> Build standardized scorecard for renewals.</div></div>');
-    cards.push('<div class="ins" style="border-left-color:var(--p)"><div class="ins-t">Material Handler Pay Risk</div><div class="ins-p"><b>11,090 employees (66%)</b> are Material Handlers earning ₹17,164 - lowest paid role. Executive CTC is 2.3x higher at ₹38,691. Any market competitor offering ₹500 more will poach talent. <b>Action:</b> Create upskilling pathway to Reach Truck/Fork Lift roles (+₹6K-9K CTC).</div></div>');
-    cards.push('<div class="ins" style="border-left-color:var(--r)"><div class="ins-t">March Exit Spike: +56%</div><div class="ins-p">Exits jumped <b>132 to 206</b> (Feb to Mar). West 1 doubled (27 to 62), South3 went 0 to 19. March-end contract cycles and appraisal-season attrition likely factors. <b>Action:</b> Pre-emptive retention conversations in Feb for next year.</div></div>');
+    cards.push('<div class="ins"><div class="ins-t">South1 Attrition Crisis</div><div class="ins-p">South1 = <b>42-67% of all exits</b>. Karnataka: 88 exits Mar. CTC ₹16,753 lowest. <b>Action:</b> Benchmark CTC.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">63% Workforce &lt;1yr Tenure</div><div class="ins-p"><b>10,654 of 16,947</b> under 1yr. 48.6% exits in year 1. <b>Action:</b> 30-60-90 check-in.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--o)"><div class="ins-t">West 2 OT Surged to 16.8%</div><div class="ins-p"><b>3x threshold</b>. Avadhoot 11.3%. <b>Action:</b> Cap OT at 10% in 30 days.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--g)"><div class="ins-t">Female Growth: 18.4% → 20.5%</div><div class="ins-p"><b>+2.1pp</b> (3,120→3,429). <b>Target:</b> 25% by FY26-end.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--b)"><div class="ins-t">Agency Cost Gap: 2.1x</div><div class="ins-p">Dedha <b>₹32,298</b> vs Needs <b>₹15,606</b>. <b>Action:</b> Standardized scorecard.</div></div>');
+    cards.push('<div class="ins" style="border-left-color:var(--p)"><div class="ins-t">Material Handler Pay Risk</div><div class="ins-p"><b>11,090 (66%)</b> earn ₹17,164. <b>Action:</b> Upskilling pathway +₹6K-9K.</div></div>');
+    cards.push('<div class="ins"><div class="ins-t">March Exit Spike: +56%</div><div class="ins-p">132→206. West 1 doubled. <b>Action:</b> Pre-emptive Feb retention.</div></div>');
   }
-
-  cards.push('<div class="sum-card"><h4 style="color:var(--g)">Strengths</h4>'+[['Female participation','+2.1pp'],['Overall attrition','1.2%'],['East stability','0.1% attr'],['March attend recovery','25.4d'],['BGV compliance','94%']].map(function(x){return'<div class="sr"><span class="sr-l">'+x[0]+'</span><span class="sr-v" style="color:var(--g)">'+x[1]+'</span></div>'}).join('')+'</div>');
-  cards.push('<div class="sum-card"><h4 style="color:var(--r)">Concerns</h4>'+[['South1 attrition','2.2%'],['West 2 OT','16.8%'],['<1yr workforce','63%'],['Agency cost gap','2.1x'],['Mar exit spike','+56%'],['Handler pay','₹17K']].map(function(x){return'<div class="sr"><span class="sr-l">'+x[0]+'</span><span class="sr-v" style="color:var(--r)">'+x[1]+'</span></div>'}).join('')+'</div>');
-
-  cards.push('<div class="ins c3" style="border-left-color:var(--red)"><div class="ins-t">Action Plan for '+mName+'</div><div class="ins-p"><b>This Week:</b> '+(hot?hot.name+' exit interviews':'Monitor attrition')+' | '+(otHot&&otHot.otPct>6?otHot.name+' OT audit':'OT check')+' | Agency scorecard draft<br><b>This Month:</b> 30-60-90 onboarding program | Compensation benchmarking | Buddy system pilot at top 5 sites<br><b>This Quarter:</b> Female hiring target 25% | Predictive attrition model | Agency consolidation 15 to 8-10 | Handler upskilling program</div></div>');
-
+  cards.push('<div class="sum-card"><h4 style="color:var(--g)">Strengths</h4>'+[['Female participation','+2.1pp'],['Overall attrition','1.2%'],['East stability','0.1%'],['March attend','25.4d'],['BGV','94%']].map(x=>'<div class="sr"><span class="sr-l">'+x[0]+'</span><span class="sr-v" style="color:var(--g)">'+x[1]+'</span></div>').join('')+'</div>');
+  cards.push('<div class="sum-card"><h4 style="color:var(--r)">Concerns</h4>'+[['South1 attrition','2.2%'],['West 2 OT','16.8%'],['<1yr workforce','63%'],['Agency gap','2.1x'],['Mar spike','+56%'],['Handler pay','₹17K']].map(x=>'<div class="sr"><span class="sr-l">'+x[0]+'</span><span class="sr-v" style="color:var(--r)">'+x[1]+'</span></div>').join('')+'</div>');
+  cards.push('<div class="ins c3" style="border-left-color:var(--red)"><div class="ins-t">Action Plan — '+mName+'</div><div class="ins-p"><b>Week:</b> '+(hot?hot.name+' exits':'Monitor')+' | '+(otHot&&otHot.otPct>6?otHot.name+' OT':'OT check')+' | Scorecard<br><b>Month:</b> 30-60-90 onboarding | Comp benchmarking | Buddy pilot<br><b>Quarter:</b> Female 25% | Predictive model | Agency consolidation</div></div>');
   $('pg-in').innerHTML=cards.join('');
 }
 
-// ========== SEARCH ==========
 function rSR(){
   const items=[
-    ...Object.entries(D.wh).map(([w,n])=>({type:'Warehouse',name:w,detail:fmt(n)+' employees',fn:()=>{const tA=Object.values(D.wh).reduce((s,v)=>s+v,0);whPopup(w,n,tA)}})),
-    ...Object.entries(D.ag).map(([a,v])=>({type:'Agency',name:a,detail:fmt(v.n)+' emp | '+rf(v.ctc),fn:()=>agencyPopup(a,v)})),
+    ...Object.entries(D.wh).map(([w,n])=>({type:'Warehouse',name:w,detail:fmt(n)+' emp',fn:()=>{const id=storePopup({_name:w,cnt:n,tA:Object.values(D.wh).reduce((s,v)=>s+v,0)});whPopup(id)}})),
+    ...Object.entries(D.ag).map(([a,v])=>({type:'Agency',name:a,detail:fmt(v.n)+' | '+rf(v.ctc),fn:()=>{const id=storePopup({...v,_name:a});agencyPopup(id)}})),
     ...regs.map(r=>({type:'Region',name:r,detail:'HC: '+fmt(D.headcount[r]?.mar?.a||0),fn:()=>{$('fR').value=r;R()}})),
-    ...Object.entries(D.sector).map(([s,n])=>({type:'Sector',name:s,detail:fmt(n)+' emp',fn:()=>setCross('sector',s)})),
-    ...Object.entries(D.desig).map(([d,v])=>({type:'Designation',name:d,detail:fmt(v.n)+' emp | '+rf(v.ctc),fn:()=>desigPopup(d,v)}))
+    ...Object.entries(D.sector).map(([s,v])=>({type:'Sector',name:s,detail:fmt(v.n)+' | '+rf(v.ctc),fn:()=>setCross('sector',s)})),
+    ...Object.entries(D.desig).map(([d,v])=>({type:'Designation',name:d,detail:fmt(v.n)+' | '+rf(v.ctc),fn:()=>{const id=storePopup({...v,_name:d});desigPopup(id)}}))
   ];
   $('pg-sr').innerHTML='<div class="search-wrap"><input class="search-input" id="sBox" type="text" placeholder="Search warehouses, agencies, regions, sectors, designations..." oninput="doS()"><div class="search-results" id="sRes"></div></div>';
   window._si=items;doS();
@@ -439,7 +459,6 @@ function doS(){
   const items=(window._si||[]).filter(i=>!q||i.name.toLowerCase().includes(q)||i.type.toLowerCase().includes(q)).slice(0,20);
   $('sRes').innerHTML=items.map(it=>'<div class="search-item" onclick="window._si['+window._si.indexOf(it)+'].fn()"><h4>'+it.name+' <span style="color:var(--t3);font-weight:500;font-size:10px">| '+it.type+'</span></h4><p>'+it.detail+'</p></div>').join('')||'<p style="color:var(--t3);padding:20px;text-align:center">No results</p>';
 }
-
 R();
 </script>
 </body>
