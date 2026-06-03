@@ -115,7 +115,7 @@ table.dt .hi{color:var(--red);font-weight:800}.dt .lo{color:var(--g);font-weight
 </style>
 </head>
 <body>
-<div class="hdr"><div class="hdr-l"><img src="https://banner2.cleanpng.com/20180608/cuo/aa8ipgnu5.webp" alt="DHL" style="height:38px;border-radius:4px"><div><h1>HR Analytics Dashboard</h1><p>Supply Chain India — Q1 2026 Workforce Intelligence</p></div></div><div class="hdr-r"><span>Jan — Mar 2026</span><div class="badge">LIVE</div></div></div>
+<div class="hdr"><div class="hdr-l"><div style="background:#D40511;padding:8px 18px;border-radius:6px;display:flex;align-items:center"><span style="font-family:'Arial Black',Impact,sans-serif;font-size:28px;font-weight:900;color:#FFCC00;letter-spacing:5px;line-height:1">DHL</span></div><div><h1>HR Analytics Dashboard</h1><p>Supply Chain India — Q1 2026 Workforce Intelligence</p></div></div><div class="hdr-r"><span>Jan — Mar 2026</span><div class="badge">LIVE</div></div></div>
 <div class="ctrl">
 <label>Month</label><select id="fM" onchange="R()"><option value="jan">January</option><option value="feb">February</option><option value="mar" selected>March</option></select>
 <div class="sp"></div><label>Region</label><select id="fR" onchange="R()"><option value="all">All Regions</option><option value="Corporate">Corporate</option><option value="East">East</option><option value="North">North</option><option value="South1">South1</option><option value="South2">South2</option><option value="South3">South3</option><option value="West 1">West 1</option><option value="West 2">West 2</option><option value="Other Offices">Other Offices</option></select>
@@ -301,8 +301,8 @@ function rOV(F){
     {label:'Inactive',data:trend.map(d=>d.i),backgroundColor:'#D40511',yAxisID:'y1'}
   ]},options:{responsive:true,maintainAspectRatio:false,layout:{padding:{top:20}},plugins:{legend:{position:'top'},datalabels:{...dlAbove,formatter:v=>fmt(v)}},scales:{x:{grid:{display:false}},y:{type:'linear',position:'left',grid:{color:GRD},beginAtZero:false,title:{display:true,text:'Active',font:{size:10}}},y1:{type:'linear',position:'right',grid:{display:false},beginAtZero:true,title:{display:true,text:'Inactive',font:{size:10}}}}}});
 
-  // Gender — BOTH labels OUTSIDE with name
-  ch.c2=new Chart($('c2'),{type:'doughnut',data:{labels:['Male ('+fmt(g.M)+')','Female ('+fmt(g.F)+')'],datasets:[{data:[g.M,g.F],backgroundColor:['#888','#D40511'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'bottom',labels:{font:{size:11,family:'Inter'},padding:10}},datalabels:{display:true,color:'#1A1A1A',font:{size:13,weight:'800',family:'Inter'},anchor:'end',align:'end',offset:12,formatter:(v,ctx)=>{const t=ctx.dataset.data.reduce((a,b)=>a+b,0);const p=Math.round(v/t*100);return p+'%'}}}}});
+  // Gender — small black labels outside
+  ch.c2=new Chart($('c2'),{type:'doughnut',data:{labels:['Male ('+fmt(g.M)+')','Female ('+fmt(g.F)+')'],datasets:[{data:[g.M,g.F],backgroundColor:['#888','#D40511'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'50%',layout:{padding:20},plugins:{legend:{position:'bottom',labels:{font:{size:11,family:'Inter',weight:'600'},padding:12,usePointStyle:true}},datalabels:{display:true,color:'#1A1A1A',font:{size:11,weight:'700',family:'Inter'},anchor:'end',align:'end',offset:4,formatter:(v,ctx)=>Math.round(v/ctx.dataset.data.reduce((a,b)=>a+b,0)*100)+'%'}}}});
 
   // Sector — labels WHITE
   const sE=Object.entries(D.sector).sort((a,b)=>b[1].n-a[1].n),sL=sE.map(e=>e[0]),sD=sE.map(e=>e[1].n);
